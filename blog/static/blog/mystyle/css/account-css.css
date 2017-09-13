@@ -1,0 +1,9 @@
+span.asteriskField {
+    color: red;
+}
+a {
+    color: #3498db;
+}
+a:hover {
+    color: #2ecc71;
+}
