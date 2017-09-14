@@ -14,7 +14,6 @@ import os
 
 # 替换数据库连接库
 import pymysql
-
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -72,6 +71,7 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'oauth.Ouser'
 
 # allauth需要的配置
+# 当出现"SocialApp matching query does not exist"这种报错的时候就需要更换这个ID
 SITE_ID = 4
 
 # 设置登录和注册成功后重定向的页面，默认是/accounts/profile/
@@ -80,13 +80,13 @@ LOGIN_REDIRECT_URL = "/"
 # Email setting
 # 邮箱配置
 EMAIL_HOST = 'smtp.163.com'
-EMAIL_HOST_USER = 'zlwork2014@163.com'
+EMAIL_HOST_USER = 'stopfollow@163.com'
 EMAIL_HOST_PASSWORD = 'django666'  # 这个不是邮箱密码，而是授权码
 EMAIL_PORT = 25
 # 默认发件人，不设置的话django默认使用的webmaster@localhost，所以要设置成自己可用的邮箱
-DEFAULT_FROM_EMAIL = 'Stopfollow <zlwork2014@163.com>'
+DEFAULT_FROM_EMAIL = 'Stopfollow <stopfollow@163.com>'
 # 禁用注册邮箱验证
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 # 登录方式，选择用户名或者邮箱都能登录
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # 设置用户注册的时候必须填写邮箱地址
