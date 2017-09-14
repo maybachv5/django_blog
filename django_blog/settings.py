@@ -14,6 +14,7 @@ import os
 
 # 替换数据库连接库
 import pymysql
+
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,7 +29,7 @@ SECRET_KEY = '2020wu)kcm-0(_7z^+!e$i8!d^qo&@^u72ht#m+%p_v#5g^)5a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','.stopfollow.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.stopfollow.com']
 
 # Application definition
 
@@ -82,7 +83,7 @@ LOGIN_REDIRECT_URL = "/"
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_HOST_USER = 'stopfollow@163.com'
 EMAIL_HOST_PASSWORD = 'django666'  # 这个不是邮箱密码，而是授权码
-EMAIL_PORT = 465   # 由于阿里云的25端口打不开，所以必须使用SSL然后改用465端口
+EMAIL_PORT = 465  # 由于阿里云的25端口打不开，所以必须使用SSL然后改用465端口
 # 是否使用了SSL 或者TLS，为了用465端口，要使用这个
 EMAIL_USE_SSL = True
 # 默认发件人，不设置的话django默认使用的webmaster@localhost，所以要设置成自己可用的邮箱
@@ -93,7 +94,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # 设置用户注册的时候必须填写邮箱地址
 ACCOUNT_EMAIL_REQUIRED = True
-
 
 # 表单插件的配置
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
