@@ -17,26 +17,10 @@
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
             {% endif %}
-            <button type="submit" class="btn btn-info">{% trans "Sign Up" %} &raquo;</button>
+            <button type="submit" class="btn btn-info btn-sm">{% trans "Sign Up" %} &raquo;</button>
             <a class="pull-right" href="{{ login_url }}">已有账号登录</a>
         </form>
     </div>
 </div>
-
 {% endblock %}
 
-{% block right-content %}
-<div class="panel panel-default social-login">
-    <div class="panel-heading">
-        <h2 class="panel-title text-center">快速登录</h2>
-    </div>
-    <div class="panel-body text-center">
-        <a href="/accounts/weibo/login/?process=login">
-            <img src="{% static 'blog/img/weibo.ico'%}">
-        </a>
-        <a href="/accounts/github/login/?process=login">
-            <img src="{% static 'blog/img/github.ico'%}">
-        </a>
-    </div>
-</div>
-{% endblock %}

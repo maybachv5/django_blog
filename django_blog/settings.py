@@ -94,6 +94,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # 设置用户注册的时候必须填写邮箱地址
 ACCOUNT_EMAIL_REQUIRED = True
+# 登出直接退出，不用确认
+ACCOUNT_LOGOUT_ON_GET = True
 
 # 表单插件的配置
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
