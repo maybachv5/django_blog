@@ -82,7 +82,9 @@ LOGIN_REDIRECT_URL = "/"
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_HOST_USER = 'stopfollow@163.com'
 EMAIL_HOST_PASSWORD = 'django666'  # 这个不是邮箱密码，而是授权码
-EMAIL_PORT = 25
+EMAIL_PORT = 465   # 由于阿里云的25端口打不开，所以必须使用SSL然后改用465端口
+# 是否使用了SSL 或者TLS，为了用465端口，要使用这个
+EMAIL_USE_SSL = True
 # 默认发件人，不设置的话django默认使用的webmaster@localhost，所以要设置成自己可用的邮箱
 DEFAULT_FROM_EMAIL = 'Stopfollow <stopfollow@163.com>'
 # 禁用注册邮箱验证
@@ -91,6 +93,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # 设置用户注册的时候必须填写邮箱地址
 ACCOUNT_EMAIL_REQUIRED = True
+
+
 # 表单插件的配置
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
