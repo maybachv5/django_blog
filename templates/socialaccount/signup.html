@@ -11,7 +11,7 @@
         <h2 class="panel-title text-center">关联本地账号</h2>
     </div>
     <div class="panel-body">
-        <p>您已经使用 {{provider_name}} 登录成功，为了方便您可以随时修改您的信息，请与一个本地账号关联：</p>
+        <p>您已经使用第三方账号登录成功，为了方便您可以随时修改您的信息，请与一个本地账号关联：</p>
         <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
             {% csrf_token %}
             {{ form|crispy }}
