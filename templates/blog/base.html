@@ -25,8 +25,26 @@
 <body>
 <!--导航栏-->
 {% include 'blog/tags/navbar.html' %}
+<!--导航结束-->
 
+<!--主要内容-->
 <div class="container">
+
+    <!--消息弹框-->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <!--消息弹框结束-->
+
     <div class="row">
         <div class="col-md-8 main-box">
             {% block content %}{% endblock %}
@@ -36,6 +54,7 @@
         </div>
     </div>
 </div>
+<!--主要内容结束-->
 
 <!-- 页脚开始 -->
 {% block footer%}{% endblock %}

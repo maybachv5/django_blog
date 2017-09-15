@@ -192,3 +192,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 网站上下文信息
 SITE_DESCRIPTION = '一个后端使用Django框架，前端使用Bootstrap3搭建的个人博客，用于Python的学习和交流。'
 SITE_KEYWORDS = 'Python，Scrapy爬虫，Django blog，个人博客'
+
+# messages 标签设置，设置成bootstrap3样式
+from django.contrib.messages import constants as message_constants
+
+MESSAGE_TAGS = {
+    message_constants.DEBUG: 'alert alert-primary alert-dismissible',
+    message_constants.INFO: 'alert alert-info alert-dismissible',
+    message_constants.SUCCESS: 'alert alert-success alert-dismissible',
+    message_constants.WARNING: 'alert alert-warning alert-dismissible',
+    message_constants.ERROR: 'alert alert-danger alert-dismissible'
+}
