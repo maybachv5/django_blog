@@ -12,7 +12,7 @@
     </div>
     <div class="panel-body">
         <p>您已经使用第三方账号登录成功，为了方便您可以随时修改您的信息，请与一个本地账号关联：</p>
-        <p class="small">注：为了保证在您忘记密码是能够收到修改密码的邮件，请务必填写正确的邮箱！</p>
+        <p class="small">注：为了保证在您忘记密码时能够收到找回密码的邮件，请务必填写有效的邮箱！</p>
         <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
             {% csrf_token %}
             {{ form|crispy }}
