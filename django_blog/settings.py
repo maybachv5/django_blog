@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'crispy_forms',  # bootstrap表单样式
 
     'blog',  # 博客应用
+    'imagekit'       # 上传图片的应用
 ]
 
 # allauth配置

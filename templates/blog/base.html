@@ -32,7 +32,7 @@
 
     <!--消息弹框-->
     {% if messages %}
-    <ul class="messages">
+    <ul class="messages text-center">
         {% for message in messages %}
         <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -65,6 +65,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--my js files-->
-{% block js-file %}{% endblock %}
+{% block js-file %}
+<script src="{% static 'blog/mystyle/js/base-js.js'%}"></script>
+{% endblock %}
 </body>
 </html>

@@ -20,6 +20,12 @@ a:hover {
     color: #fff;
     background-color: #34495e;
 }
+.asteriskField {
+    color:red;
+}
+.messages {
+    padding-left:0;
+}
 /*导航栏++++++++++++++++++++++++++++++++++++++++++++++++++*/
 .navbar-fixed-top {
     background-color: #34495e;
@@ -71,4 +77,22 @@ footer .navbar a:hover {
     color:#1abc9c;
     text-decoration:none;
 }
+/*个人信息+++++++++++++++++++++++++++++++++++++++++++++++*/
+.user-infos .list-group {
+    padding:10px 15px;
+}
+.profile .list-group-item,
+.user-infos .list-group-item {
+    border:none;
+}
+.user-infos a {
+    margin:10px 0px;
+    padding:5px 100px;
+}
 
+.change_profile a {
+    color: #3498db;
+}
+.change_profile a:hover {
+    color: #2ecc71;
+}
