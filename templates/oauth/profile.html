@@ -34,13 +34,6 @@
                     <span>邮箱：</span>
                     <span>{{ user.email|get_email_secret }}</span>
                 </p>
-                <a href="
-                    {% if user.socialaccount_set.exists %}
-                    {{ user.socialaccount_set.all.0.get_avatar_url }}
-                    {% else %}
-                    {{ user.avatar.url }}
-                    {% endif %}">头像
-                </a>
             </li>
         </ul>
     </div>
