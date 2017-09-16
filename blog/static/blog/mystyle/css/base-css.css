@@ -6,10 +6,10 @@ padding-top:80px;
 
 /*通用设置+++++++++++++++++++++++++++++++++++++++++++++++++*/
 a {
-    color:#333;
+    color:#3498db;
 }
 a:hover {
-    color:#1abc9c;
+    color:#2ecc71;
     text-decoration: none;
 }
 .panel {
@@ -95,4 +95,8 @@ footer .navbar a:hover {
 }
 .change_profile a:hover {
     color: #2ecc71;
+}
+/*注册登录表单++++++++++++++++++*/
+.social-login a{
+    padding:0 10px;
 }
