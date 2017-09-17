@@ -53,6 +53,11 @@
         <li class="list-group-item text-center" data-toggle="tooltip" data-placement="bottom" title="修改账号密码">
             <a href="{% url 'account_change_password' %}">修改密码</a>
         </li>
+        {% if user.is_staff %}
+        <li class="list-group-item text-center" data-toggle="tooltip" data-placement="bottom" title="登录管理中心">
+            <a href="/admin/">后台管理</a>
+        </li>
+        {% endif %}
     </ul>
 </div>
 {% endblock %}
