@@ -2,18 +2,15 @@
 
 {% block head_title %}博客主页{% endblock %}
 
-{% block main-content %}
-{% if user.socialaccount_set.exists %}
-<!--显示用户登陆的第三方是什么-->
-<p>用户来源：{{ user.socialaccount_set.all.0.provider }}</p>
-<!--根据提取到的用户信息展示出来-->
-<p>头像：</p>
-<img src="{{ user.socialaccount_set.all.0.extra_data.avatar_url }}">
-<p>用户名：{{ user.socialaccount_set.all.0.extra_data.name }}</p>
-<p>邮箱：{{ user.socialaccount_set.all.0.extra_data.email }}</p>
-<p>url：{{ user.socialaccount_set.all.0.extra_data.html_url }}</p>
-<p>uid：{{ user.socialaccount_set.all.0.uid }}</p>
-{% endif %}
+<!--左边部分-->
+{% block content %}
+
+{% include 'blog/tags/carousel.html'%}
+
+{% endblock %}
+
+{% block right-content %}
+{% include 'blog/tags/base-right.html'%}
 {% endblock %}
 
 {% block footer %}

@@ -2,6 +2,8 @@
 # 修改了自定义标签要重启服务器
 
 from django import template
+from ..models import Article,Category,Tag
+from django.db.models.aggregates import Count
 
 register = template.Library()
 
@@ -23,3 +25,17 @@ def get_show_name(user):
 def get_show_avatar(user):
     '''返回一个用户的展示头像<img>标签，优先用网络头像'''
     return {'user':user}
+
+@register.simple_tag
+def get_tag_list():
+    '''
+    返回标签列表
+    这种过滤方式不仅给标签增加了一个统计文章总数的属性，还可以把没有文章的标签过滤掉
+    '''
+    return Tag.objects.annotate(total_num=Count('article')).filter(total_num__gt=0)
+
+@register.simple_tag
+def get_category_list():
+    '''返回文章分类列表'''
+    # return Category.objects.all()
+    return Category.objects.annotate(total_num=Count('article')).filter(total_num__gt=0)

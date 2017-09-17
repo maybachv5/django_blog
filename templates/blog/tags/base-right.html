@@ -1,0 +1,67 @@
+{% load static %}
+{% load blog_tags %}
+
+<!--个人中心开始-->
+<div class="panel panel-info" id="focus">
+    <div class="panel-heading">
+        <h4><strong><i class="glyphicon glyphicon-home"></i> 个人空间</strong></h4>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-4">
+                <a href="https://github.com/Hopetree" target="_blank">
+                    <img src="{% static 'blog/img/github.png' %}" class="img-responsive center-block">
+                </a>
+                <p class="text-center">Github</p>
+            </div>
+            <div class="col-xs-4">
+                <a href="#" target="_blank">
+                    <img src="{% static 'blog/img/blog.png' %}" class="img-responsive center-block">
+                </a>
+                <p class="text-center">建站历程</p>
+            </div>
+            <div class="col-xs-4">
+                <a href="#" target="_blank">
+                    <img src="{% static 'blog/img/rss.png' %}" class="img-responsive center-block">
+                </a>
+                <p class="text-center">RSS订阅</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--个人中心结束-->
+
+<!-- 文章分类开始 -->
+<div class="panel panel-info" id="category-box">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h4><strong><i class="glyphicon glyphicon-list"></i> 文章分类</strong></h4>
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+        {% get_category_list as categories %}
+        {% for cate in categories %}
+        <li class="list-group-item">
+            <a href="#" title="点击查看【{{ cate.name }}】分类下所有文章"><strong>{{ cate.name }}</strong></a>
+            <span class="pull-right text-center" title="当前分类下有{{ cate.get_article_list.count }}篇文章发表">{{ cate.get_article_list.count }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- 文章分类结束 -->
+
+<!--标签云-->
+<div class="panel panel-info" id="tag-cloud">
+    <div class="panel-heading">
+        <h4><strong><i class="glyphicon glyphicon-tags"></i> 标签云</strong></h4>
+    </div>
+    <div class="panel-body">
+        <div class="tag-cloud">
+            {% get_tag_list as tag_list %}
+            {% for tag in tag_list %}
+            <a href="#" class="tags" id="tag-{{ forloop.counter }}"
+               title="【{{ tag.name }}】标签下有{{ tag.get_article_list.count }}篇文章">{{ tag.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

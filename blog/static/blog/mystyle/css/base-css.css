@@ -64,9 +64,151 @@ a:hover {
     padding:5px 15px;
 }
 .dropdown > #user-avatar > img {
-    width: 38px;
-    height: 38px;
+    width: 39px;
+    height: 39px;
     border-radius: 50%;
+}
+/*设置轮播图片样式+++++++++++++++++++++++++++++++++++++++++++*/
+#my-carousel{
+    margin-bottom:20px;
+}
+#move-btn {
+    margin:0 0;
+    opacity:0;
+}
+#move-btn:hover {
+    opacity:.7;
+}
+.carousel-caption > p {
+    font-size:12px;
+}
+/*右边栏固定区域++++++++++++++++++++++++++++++++++++++++++++*/
+.base-right .panel {
+    border:none;
+}
+.base-right .panel-heading {
+    padding:5px 15px;
+    border:0;
+}
+/*个人空间*/
+#focus img {
+    width:40px;
+    height:40px;
+    margin-bottom:5px;
+}
+#focus img:hover {
+    opacity:.6;
+}
+/*分类列表*/
+#category-box span {
+    width:40px;
+    background-color:#1abc9c;
+    color:#fff;
+    font-weight:700;
+    border-radius:.3em;
+}
+/*标签云*/
+.tag-cloud {
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0;
+    text-align: left;
+    line-height: 24px;
+}
+.tags {
+    color:#fff;
+    padding: .1em .5em .1em .5em;
+    float: left;
+    text-align: center;
+    border-radius: .3em;
+    margin: .3em 1% .3em 1%;
+    transition: all .5s;
+    font-size: 100%;
+    line-height: 24px;
+}
+.tags:hover,
+.item-tags:hover {
+    color:#fff;
+    text-decoration:none;
+    opacity: .7;
+    border-radius:0;
+}
+/*云标签颜色*/
+#tag-1,#tag-10,#tag-25 {
+    background:#2ECC71;
+}
+#tag-2,#tag-11,#tag-18 {
+    background:#3498DB;
+}
+#tag-3 ,#tag-12,#tag-19 {
+    background:#9B59B6;
+}
+#tag-4 ,#tag-13,#tag-20 {
+    background:#F1C40F;
+}
+#tag-5 ,#tag-14,#tag-21 {
+    background:#E74C3C;
+}
+#tag-6 ,#tag-15,#tag-22 {
+    background:#BDC3C7;
+}
+#tag-7 ,#tag-16,#tag-23 {
+    background:#E67E22;
+}
+#tag-8 ,#tag-17,#tag-24 {
+    background:#1ABC9C;
+}
+#tag-9,#tag-26 {
+    background:#fc9d9a;
+}
+
+/*注册登录表单++++++++++++++++++*/
+.social-login a{
+    padding:0 10px;
+}
+/*个人信息+++++++++++++++++++++++++++++++++++++++++++++++*/
+.user-infos .list-group {
+    padding:10px 15px;
+}
+.profile .list-group-item,
+.user-infos .list-group-item {
+    border:none;
+}
+.user-infos a {
+    margin:5px 0px;
+    padding:5px 10px;
+}
+
+.change_profile a {
+    color: #3498db;
+}
+.change_profile a:hover {
+    color: #2ecc71;
+}
+/*回到顶部+++++++++++++++++++++++++++++++++++++++++++++++++*/
+#to-top {
+    position: fixed;
+    bottom: 65px;
+    right: 30px;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background-color: #34495e;
+    top: auto;
+    display:none;
+    cursor: pointer;
+    color: #fff;
+}
+#to-top:hover{
+    opacity: .7;
+}
+#to-top i {
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    display: block;
 }
 /*页脚样式+++++++++++++++++++++++++++++++++++++++++++++++++*/
 footer .navbar {
@@ -85,26 +227,26 @@ footer .navbar a:hover {
     color:#1abc9c;
     text-decoration:none;
 }
-/*个人信息+++++++++++++++++++++++++++++++++++++++++++++++*/
-.user-infos .list-group {
-    padding:10px 15px;
-}
-.profile .list-group-item,
-.user-infos .list-group-item {
-    border:none;
-}
-.user-infos a {
-    margin:10px 0px;
-    padding:5px 100px;
+/*小屏幕（手机平板，小于768px）*/
+@media (min-width:768px){
+    .carousel-caption > p {
+        font-size:14px;
+    }
+
 }
 
-.change_profile a {
-    color: #3498db;
+/*中等屏幕（桌面显示器，小于992px）*/
+@media (min-width:992px){
+    .carousel-caption > p {
+        font-size:16px;
+    }
+
 }
-.change_profile a:hover {
-    color: #2ecc71;
-}
-/*注册登录表单++++++++++++++++++*/
-.social-login a{
-    padding:0 10px;
+
+/*大屏幕（大桌面显示器，大于1200px）*/
+@media (min-width:1200px){
+    .carousel-caption > p {
+        font-size:18px;
+    }
+
 }

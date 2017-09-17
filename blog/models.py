@@ -13,6 +13,10 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+    def get_article_list(self):
+        '''返回当前标签下所有发表的文章列表'''
+        return Article.objects.filter(tags=self,status='p')
+
 
 class Category(models.Model):
     name = models.CharField('文章分类',max_length=15)
@@ -23,6 +27,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_article_list(self):
+        return Article.objects.filter(category=self,status='p')
 
 
 class Article(models.Model):
