@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load blog_tags %}
 
 {% block css-file %}
 <link href="{% static 'blog/mystyle/css/timeline.css'%}" rel="stylesheet">
@@ -23,6 +24,7 @@
                     <h3 class="timeline-title">{{ timeline.title }}</h3>
                     <p>
                         <span class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ timeline.update_date|date:'Y-m-d'  }}</span>
+                        <span class="pull-right" id="star">{% get_star timeline.star_num %}</span>
                     </p>
                 </div>
                 <div class="timeline-body">

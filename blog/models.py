@@ -90,7 +90,15 @@ class Timeline(models.Model):
         ('L', '左边'),
         ('R', '右边'),
     )
+    STAR_NUM = (
+        (1,'1颗星'),
+        (2,'2颗星'),
+        (3,'3颗星'),
+        (4,'4颗星'),
+        (5,'5颗星'),
+    )
     side = models.CharField('位置', max_length=1, choices=SIDE_CHOICE, default='L')
+    star_num = models.IntegerField('星星个数',choices=STAR_NUM,default=3)
     icon = models.CharField('图标', max_length=50, default='glyphicon glyphicon-pencil')
     icon_color = models.CharField('图标颜色', max_length=20, choices=COLOR_CHOICE, default='info')
     title = models.CharField('标题', max_length=50)
