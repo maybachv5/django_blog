@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Tag, Category
+from .models import Article, Tag, Category, Timeline
 
 
 @admin.register(Article)
@@ -45,3 +45,14 @@ class CategoryAdmin(admin.ModelAdmin):
 # 自定义管理站点的名称和URL标题
 admin.site.site_header = '网站管理'
 admin.site.site_title = 'Stopfollow 个人博客'
+
+
+@admin.register(Timeline)
+class TimelineAdmin(admin.ModelAdmin):
+    list_display = ('title', 'side', 'update_date', 'icon', 'icon_color',)
+    fieldsets = (
+        ('图标信息', {'fields': (('icon', 'icon_color'),)}),
+        ('时间位置', {'fields': (('side', 'update_date',),)}),
+        ('主要内容', {'fields': ('title', 'content')}),
+    )
+    date_hierarchy = 'update_date'

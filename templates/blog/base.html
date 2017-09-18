@@ -27,9 +27,8 @@
 {% include 'blog/tags/navbar.html' %}
 <!--导航结束-->
 
-<!--主要内容-->
+<!--主要内容，主要的块-->
 <div class="container">
-
     <!--消息弹框-->
     {% if messages %}
     <ul class="messages text-center">
@@ -55,6 +54,10 @@
     </div>
 </div>
 <!--主要内容结束-->
+
+<!--另一个块-->
+{% block center-content%}{% endblock %}
+<!--另一个块结束-->
 
 <!--回到顶部按钮-->
 <div class="text-center" id="to-top">

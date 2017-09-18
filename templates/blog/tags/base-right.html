@@ -9,19 +9,20 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-4">
-                <a href="https://github.com/Hopetree" target="_blank">
+                <a href="https://github.com/Hopetree" target="_blank" data-toggle="tooltip" data-placement="bottom"
+                   title="前往我的Github查看更多...">
                     <img src="{% static 'blog/img/github.png' %}" class="img-responsive center-block">
                 </a>
                 <p class="text-center">Github</p>
             </div>
             <div class="col-xs-4">
-                <a href="#" target="_blank">
+                <a href="{% url 'blog:timeline' %}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="查看博客的建设历程">
                     <img src="{% static 'blog/img/blog.png' %}" class="img-responsive center-block">
                 </a>
-                <p class="text-center">建站历程</p>
+                <p class="text-center">Timeline</p>
             </div>
             <div class="col-xs-4">
-                <a href="#" target="_blank">
+                <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="使用RSS订阅博客文章">
                     <img src="{% static 'blog/img/rss.png' %}" class="img-responsive center-block">
                 </a>
                 <p class="text-center">RSS订阅</p>

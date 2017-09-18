@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block css-file %}
+<link href="{% static 'blog/mystyle/css/timeline.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block head_title %}Timeline{% endblock %}
+
+{% block center-content %}
+<div class="container">
+    <div class="page-header">
+        <h1 id="timeline">Timeline</h1>
+    </div>
+    <ul class="timeline">
+        {% for timeline in timeline_list %}
+        {% if timeline.side == 'L' %}
+        <li>
+        {% else %}<li class="timeline-inverted">{% endif %}
+            <div class="timeline-badge {{ timeline.icon_color }}"><i class="{{ timeline.icon }}"></i></div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h3 class="timeline-title">{{ timeline.title }}</h3>
+                    <p>
+                        <span class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ timeline.update_date|date:'Y-m-d'  }}</span>
+                    </p>
+                </div>
+                <div class="timeline-body">
+                    {{ timeline.content_to_markdown|safe }}
+                </div>
+            </div>
+        </li>
+        {% empty %}
+        <p>暂时没有时间线</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
