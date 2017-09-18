@@ -24,6 +24,7 @@ def get_show_name(user):
         return user.nickname
     return user.username
 
+
 @register.simple_tag
 def get_tag_list():
     '''返回标签列表,不能使用annotate方法，因为这种方法不能过滤掉草稿文章'''
@@ -45,11 +46,26 @@ def get_category_list():
             cate_list.append(each)
     return cate_list
 
+
 @register.simple_tag
 def get_star(num):
     '''得到一排星星'''
     tag_i = '<i class="glyphicon glyphicon-star"></i>'
-    return mark_safe(tag_i*num)
+    return mark_safe(tag_i * num)
+
+
+@register.simple_tag
+def get_star_title(num):
+    '''得到星星个数的说明'''
+    the_dict = {
+        1: '1颗星：微更新，涉及轻微调整或者后期规划了内容',
+        2: '2颗星：小更新，小幅度调整，一般不会迁移表格',
+        3: '3颗星：中等更新，一般会增加或减少模块，有表格的迁移',
+        4: '4颗星：大更新，涉及到应用的增减',
+        5: '5颗星：最大程度更新，一般涉及多个应用和表格的变动',
+    }
+    return the_dict[num]
+
 
 @register.inclusion_tag('blog/tags/user-avatar.html')
 def get_show_avatar(user):
