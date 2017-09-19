@@ -236,7 +236,7 @@ a:hover {
 /*回到顶部+++++++++++++++++++++++++++++++++++++++++++++++++*/
 #to-top {
     position: fixed;
-    bottom: 65px;
+    bottom: 80px;
     right: 30px;
     height: 36px;
     width: 36px;
@@ -257,6 +257,7 @@ a:hover {
     text-align: center;
     display: block;
 }
+
 /*页脚样式+++++++++++++++++++++++++++++++++++++++++++++++++*/
 footer .navbar {
     border-radius: 0;
