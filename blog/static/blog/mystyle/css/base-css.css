@@ -1,3 +1,13 @@
+/*Headroom.js*/
+.headroom {
+    transition: transform 300ms linear;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
 /*网站背景色+++++++++++++++++++++++++++++++++++++++++++++++*/
 body {
 background-color:#eee;
@@ -22,6 +32,7 @@ a:hover {
 }
 .asteriskField {
     color:red;
+    margin-left:2px;
 }
 .messages {
     padding-left:0;
@@ -163,28 +174,64 @@ a:hover {
     background:#fc9d9a;
 }
 
-/*注册登录表单++++++++++++++++++*/
-.social-login a{
-    padding:0 10px;
+/*用户登录页面+++++++++++++++++++++++++++++++++++++++++++++++*/
+/*注册登录表单*/
+#oauth-account button {
+    padding:3px 20px;
 }
-/*个人信息+++++++++++++++++++++++++++++++++++++++++++++++*/
-.user-infos .list-group {
-    padding:10px 15px;
+#social-login {
+    border-top:none;
+    background:#fff;
 }
-.profile .list-group-item,
-.user-infos .list-group-item {
+#social-login .login-title {
+    position: relative;
+    display: block;
+    margin-bottom:10px;
+}
+#social-login span {
+    color:#999;
+}
+#social-login span:before,
+#social-login span:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    background: #eee;
+    width: 38%;
+    height: 1px;
+}
+#social-login span:before {
+    left:0;
+}
+#social-login span:after {
+    right:0;
+}
+#social-login .login-link,
+#social-login .more-link {
+    padding:5px 0 10px 0;
+}
+.login-link a {
+    margin:0 20px;
+}
+/*个人中心*/
+#profile-infos {
+    margin-bottom:0;
+}
+#profile-infos li{
     border:none;
 }
-.user-infos a {
-    margin:5px 0px;
-    padding:5px 10px;
+#profile-infos .tab {
+    font-weight:600;
 }
-
-.change_profile a {
-    color: #3498db;
+#user-email .tab,
+#user-nickname .tab {
+    margin-right:15px;
 }
-.change_profile a:hover {
-    color: #2ecc71;
+#user-username .tab {
+    margin-right:2px;
+}
+.profile-more a {
+    margin: 0 5px;
 }
 /*回到顶部+++++++++++++++++++++++++++++++++++++++++++++++++*/
 #to-top {
@@ -232,6 +279,13 @@ footer .navbar a:hover {
     .carousel-caption > p {
         font-size:14px;
     }
+    #social-login span:before,
+    #social-login span:after {
+        width: 42%;
+    }
+    .profile-more a {
+        margin: 0 10px;
+    }
 
 }
 
@@ -240,6 +294,13 @@ footer .navbar a:hover {
     .carousel-caption > p {
         font-size:16px;
     }
+    #social-login span:before,
+    #social-login span:after {
+        width: 43%;
+    }
+    .profile-more a {
+        margin: 0 15px;
+    }
 
 }
 
@@ -247,6 +308,10 @@ footer .navbar a:hover {
 @media (min-width:1200px){
     .carousel-caption > p {
         font-size:18px;
+    }
+    #social-login span:before,
+    #social-login span:after {
+        width: 44%;
     }
 
 }

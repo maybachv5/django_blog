@@ -27,9 +27,8 @@
 {% include 'blog/tags/navbar.html' %}
 <!--导航结束-->
 
-<!--主要内容，主要的块-->
+<!--消息块-->
 <div class="container">
-    <!--消息弹框-->
     {% if messages %}
     <ul class="messages text-center">
         {% for message in messages %}
@@ -42,22 +41,10 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <!--消息弹框结束-->
-
-    <div class="row">
-        <div class="col-md-8 main-box">
-            {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4 right-box">
-            {% block right-content %}{% endblock %}
-        </div>
-    </div>
 </div>
-<!--主要内容结束-->
 
-<!--另一个块-->
-{% block center-content%}{% endblock %}
-<!--另一个块结束-->
+<!--主要内容块-->
+{% block content%}{% endblock %}
 
 <!--回到顶部按钮-->
 <div class="text-center" id="to-top">
@@ -66,12 +53,17 @@
 
 <!-- 页脚开始 -->
 {% block footer%}{% endblock %}
-<!--页脚结束-->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/headroom/0.5.0/headroom.min.js"></script>
+<script>
+    var myElement = document.querySelector(".navbar-fixed-top");
+    var headroom  = new Headroom(myElement);
+    headroom.init();
+</script>
 <!--my js files-->
 {% block js-file %}
 <script src="{% static 'blog/mystyle/js/base-js.js'%}"></script>

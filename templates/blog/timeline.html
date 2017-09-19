@@ -3,12 +3,12 @@
 {% load blog_tags %}
 
 {% block css-file %}
-<link href="{% static 'blog/mystyle/css/timeline.css'%}" rel="stylesheet">
+    <link href="{% static 'blog/mystyle/css/timeline.css'%}" rel="stylesheet">
 {% endblock %}
 
 {% block head_title %}Timeline{% endblock %}
 
-{% block center-content %}
+{% block content %}
 <div class="container">
     <div class="page-header">
         <h1 id="timeline">Timeline</h1>
@@ -37,4 +37,8 @@
         {% endfor %}
     </ul>
 </div>
+{% endblock %}
+
+{% block footer %}
+{% include 'blog/tags/base-footer.html' %}
 {% endblock %}

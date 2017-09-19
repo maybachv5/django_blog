@@ -4,13 +4,7 @@
 
 {% block head_title %}{% trans "Account Inactive" %}{% endblock %}
 
-{% block content %}
-<div class="panel panel-default account-inactive">
-    <div class="panel-heading">
-        <h2 class="panel-title text-center">{% trans "Account Inactive" %}</h2>
-    </div>
-    <div class="panel-body">
-        <p>{% trans "This account is inactive." %}</p>
-    </div>
-</div>
+{% block panel-title %}{% trans "Account Inactive" %}{% endblock %}
+{% block panel-body %}
+<p>{% trans "This account is inactive." %}</p>
 {% endblock %}

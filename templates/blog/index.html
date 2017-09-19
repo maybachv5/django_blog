@@ -2,15 +2,17 @@
 
 {% block head_title %}博客主页{% endblock %}
 
-<!--左边部分-->
 {% block content %}
-
-{% include 'blog/tags/carousel.html'%}
-
-{% endblock %}
-
-{% block right-content %}
-{% include 'blog/tags/base-right.html'%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 main-box">
+            {% include 'blog/tags/carousel.html'%}
+        </div>
+        <div class="col-md-4 right-box">
+            {% include 'blog/tags/base-right.html'%}
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block footer %}

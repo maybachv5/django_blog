@@ -8,6 +8,7 @@ from django.views import generic
 def homeview(request):
     return render(request,'blog/index.html')
 
+
 class TimelineView(generic.ListView):
 
     template_name = 'blog/timeline.html'

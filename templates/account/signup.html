@@ -5,22 +5,16 @@
 
 {% block head_title %}用户注册{% endblock %}
 
-{% block content %}
-<div class="panel panel-default signup">
-    <div class="panel-heading">
-        <h2 class="panel-title text-center">{% trans "Sign Up" %}</h2>
-    </div>
-    <div class="panel-body">
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-            {% csrf_token %}
-            {{ form|crispy }}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-            {% endif %}
-            <button type="submit" class="btn btn-info btn-sm">{% trans "Sign Up" %} &raquo;</button>
-            <a class="pull-right" href="{{ login_url }}">已有账号登录</a>
-        </form>
-    </div>
-</div>
+{% block panel-title %}{% trans "Sign Up" %}{% endblock %}
+{% block panel-body %}
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button type="submit" class="btn btn-info btn-sm">{% trans "Sign Up" %}</button>
+    <a class="pull-right" href="{{ login_url }}">已有账号登录</a>
+</form>
 {% endblock %}
 
