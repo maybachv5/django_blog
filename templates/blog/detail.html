@@ -1,0 +1,110 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load humanize %}
+{% load blog_tags %}
+
+{% block head_title %}{{ article.title }}{% endblock %}
+
+{% block css-file %}
+<link href="{% static 'blog/pygments/github.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 main-box">
+            <div class="post">
+                <div class="text-center post-title">
+                    <h3 class="page-header"><strong>{{ article.title }}</strong></h3>
+                </div>
+                <ul class="post-infos text-center list-inline">
+                    <li class="create-date" data-toggle="tooltip" data-placement="bottom"
+                        title="最近更新时间： {{ article.update_date|date:'Y-m-d'}}">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                        {{ article.create_date|date:"Y-m-d" }}
+                    </li>
+                    <li class="views"> 阅读 {{ article.views }}</li>
+                    <!--给评论的地方锚点，直接转到评论的地方去-->
+                    <li id="look-comments">
+                        <a class="comments" href="#comment-form" title="查看评论">评论 {{ article.comments }}</a>
+                    </li>
+                </ul>
+                <div class="article-body">
+                    {{ article.body_to_markdown|safe }}
+                </div>
+                <!--切换文章部分开始-->
+                <!--PC端显示-->
+                <nav class="hidden-xs" aria-label="..." id="next-post">
+                    <ul class="pager">
+                        {% if article.get_pre %}
+                        <li class="previous">
+                            <a href="{{ article.get_pre.get_absolute_url }}" title="上一篇：{{ article.get_pre.title }}">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                                {{ article.get_pre.title|truncatechars:18 }}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if article.get_next %}
+                        <li class="next">
+                            <a href="{{ article.get_next.get_absolute_url }}" title="下一篇：{{ article.get_next.title }}">
+                                {{ article.get_next.title|truncatechars:18 }}
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <!--手机端显示-->
+                <nav class="visible-xs-block" aria-label="..." id="next-post">
+                    <ul class="pager">
+                        {% if article.get_pre %}
+                        <li class="previous"><a href="{{ article.get_pre.get_absolute_url }}">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            上一篇</a>
+                        </li>
+                        {% endif %}
+                        {% if article.get_next %}
+                        <li class="next"><a href="{{ article.get_next.get_absolute_url }}">下一篇 <i
+                                class="glyphicon glyphicon-chevron-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <!--切换文章部分结束-->
+                <!--标签云-->
+                <div class="tag-cloud">
+                    {% for tag in article.tags.all %}
+                    <a class="label tags" id="tag-{{ forloop.counter }}" href="#">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+                <!--标签云结束-->
+            </div>
+        </div>
+        <div class="col-md-4 right-box">
+            <div class="panel panel-info hidden-xs hidden-sm" id="toc-box" data-spy="affix">
+                <div class="panel-heading">
+                    <h4><strong><i class="glyphicon glyphicon-list-alt"></i> 文章目录</strong></h4>
+                </div>
+                <div class="panel-body">
+                    {{ article.toc|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'blog/tags/base-footer.html' %}
+{% endblock %}
+
+{% block js-file%}
+<script>
+//锚点平滑移动到指定位置
+$('.toc a,#look-comments a').click(function () {
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top-55
+        }, 500);
+    return false;
+});
+</script>
+{% endblock %}

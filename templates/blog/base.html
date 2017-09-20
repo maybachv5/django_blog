@@ -28,8 +28,8 @@
 <!--导航结束-->
 
 <!--消息块-->
+{% if messages %}
 <div class="container">
-    {% if messages %}
     <ul class="messages text-center">
         {% for message in messages %}
         <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
@@ -40,8 +40,8 @@
         </div>
         {% endfor %}
     </ul>
-    {% endif %}
 </div>
+{% endif %}
 
 <!--主要内容块-->
 {% block content%}{% endblock %}
@@ -65,8 +65,8 @@
     headroom.init();
 </script>
 <!--my js files-->
-{% block js-file %}
 <script src="{% static 'blog/mystyle/js/base-js.js'%}"></script>
+{% block js-file %}
 {% endblock %}
 </body>
 </html>

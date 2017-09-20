@@ -1,0 +1,17 @@
+<!--分页模板，标签函数中不需要传递参数，直接调用上级参数即可-->
+<div class="well text-center cut-page">
+    <ul class="list-inline">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+        {% else %}
+        <li class="no-page" title="当前页已经是首页">上一页</li>
+        {% endif %}
+        <li>第 {{ page_obj.number }} / {{ paginator.num_pages }} 页</li>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+        {% else %}
+        <li class="no-page" title="当前页已经是末页">下一页</li>
+        {% endif %}
+    </ul>
+</div>
+

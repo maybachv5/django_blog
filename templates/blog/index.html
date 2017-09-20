@@ -1,4 +1,7 @@
 {% extends "blog/base.html" %}
+{% load static %}
+{% load humanize %}
+{% load blog_tags %}
 
 {% block head_title %}博客主页{% endblock %}
 
@@ -7,6 +10,17 @@
     <div class="row">
         <div class="col-md-8 main-box">
             {% include 'blog/tags/carousel.html'%}
+            <!--文章列表开始-->
+            {% for article in article_list %}
+            {% load_article_summary article %}
+            {% endfor %}
+            <!--文章列表结束-->
+
+            <!--分页开始-->
+            {% if is_paginated %}
+            {% load_pages %}
+            {% endif %}
+            <!--分页结束-->
         </div>
         <div class="col-md-4 right-box">
             {% include 'blog/tags/base-right.html'%}

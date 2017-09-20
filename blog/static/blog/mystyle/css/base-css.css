@@ -16,7 +16,7 @@ padding-top:80px;
 
 /*通用设置+++++++++++++++++++++++++++++++++++++++++++++++++*/
 a {
-    color:#3498db;
+    color:#222;
 }
 a:hover {
     color:#2ecc71;
@@ -173,9 +173,84 @@ a:hover {
 #tag-9,#tag-26 {
     background:#fc9d9a;
 }
+/*文章列表+++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.article-item {
+    margin:0 0 15px 0;
+    padding-bottom:14px;
+    border-bottom: 1px solid #fff;
+}
+.article-item img {
+    width:200px;
+    border:1px solid #fff;
+}
+.article-item .article-title > h4 {
+    line-height: 1.3;
+}
+.article-item > .media-body {
+    padding-left:10px;
+}
+/*文章详情页+++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*文章正文*/
+.post {
+    background:#fff;
+    padding: 15px 2%;
+    margin-bottom:20px;
+}
+.post-title h3 {
+    color:#34495e;
+    margin: 10px 0 20px 0;
+    padding:10px 0 15px 0;
+}
+.post-infos {
+    margin: 15px 0 40px 0;
+}
+.article-body {
+    margin-bottom:25px;
+    word-wrap:break-word;
+    display:block;
+}
+.article-body h3 {
+    font-size:20px;
+    font-weight:600;
+    margin: 5px 0;
+    padding: 0 10px;
+    border-left: 5px solid #1abc9c;
+    background-color: #f7f7f7;
+    line-height: 40px;
+}
+.article-body h4 {
+    font-weight:600;
+    font-size:17px;
+}
+.article-body img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.post #next-post {
+    margin: 15px 0;
+    border-bottom:1px solid #eee;
+}
+/*文章目录*/
+/*这里只给了固定，但是还必须设定宽度，所以宽度在不同屏幕中设置了不同的值*/
+.toc a {
+    font-size:15px;
+    line-height:1.7;
+    padding:5px 0;
+}
+.toc > ul > li > a {
+    font-weight:600;
+}
 
 /*用户登录页面+++++++++++++++++++++++++++++++++++++++++++++++*/
 /*注册登录表单*/
+a.secondaryAction {
+    color:#337ab7;
+}
+a.secondaryAction:hover {
+    color:#2ecc71;
+    text-decoration: none;
+}
 #oauth-account button {
     padding:3px 20px;
 }
@@ -296,6 +371,22 @@ footer .navbar a:hover {
     .profile-more a {
         margin: 0 15px;
     }
+    .article-item p {
+        font-size: 15px;
+    }
+    .article-body {
+        font-size:15px;
+        line-height: 1.75;
+    }
+    .article-body h3 {
+        font-size:21px;
+    }
+    .article-body h4 {
+        font-weight:18px;
+    }
+    #toc-box {
+        width:293.333px;
+    }
 
 }
 
@@ -307,6 +398,22 @@ footer .navbar a:hover {
     #social-login span:before,
     #social-login span:after {
         width: 44%;
+    }
+        .article-item p {
+        font-size: 16px;
+    }
+    .article-body {
+        font-size:16px;
+        line-height: 1.75;
+    }
+    .article-body h3 {
+        font-size:23px;
+    }
+    .article-body h4 {
+        font-weight:20px;
+    }
+    #toc-box {
+        width:360px;
     }
 
 }

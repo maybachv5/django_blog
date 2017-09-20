@@ -5,7 +5,7 @@ $(function () {
 //回到顶部
 $(window).scroll(function(){
     $('#to-top').hide();
-    if ($(window).scrollTop()>=500){
+    if ($(window).scrollTop()>=600){
         $('#to-top').show();
     };
 });

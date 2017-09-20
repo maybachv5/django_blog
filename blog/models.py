@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 import markdown
 import emoji
+from django.shortcuts import reverse
 
 
 # Create your models here.
@@ -64,6 +65,15 @@ class Article(models.Model):
     def __str__(self):
         return self.title[:20]
 
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'article_id': self.id})
+
+    def body_to_markdown(self):
+        return markdown.markdown(self.body, extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ])
+
     def update_views(self):
         self.views += 1
         self.save(update_fields=['views'])
@@ -73,10 +83,10 @@ class Article(models.Model):
         self.save(update_fields=['comments'])
 
     def get_pre(self):
-        return Article.objects.filter(id__lt=self.id).order_by('-id').first()
+        return Article.objects.filter(id__lt=self.id,status='p').order_by('-id').first()
 
     def get_next(self):
-        return Article.objects.filter(id__gt=self.id).order_by('id').first()
+        return Article.objects.filter(id__gt=self.id,status='p').order_by('id').first()
 
 
 class Timeline(models.Model):

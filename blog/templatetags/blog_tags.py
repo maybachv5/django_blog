@@ -71,3 +71,13 @@ def get_star_title(num):
 def get_show_avatar(user):
     '''返回一个用户的展示头像<img>标签，优先用网络头像'''
     return {'user': user}
+
+@register.inclusion_tag('blog/tags/article-summary.html')
+def load_article_summary(article):
+    '''返回文章列表模板'''
+    return {'article':article}
+
+@register.inclusion_tag('blog/tags/paging.html',takes_context=True)
+def load_pages(context):
+    '''分页标签模板，不需要传递参数，直接继承参数'''
+    return context
