@@ -222,13 +222,7 @@ a:hover {
 }
 #profile-infos .tab {
     font-weight:600;
-}
-#user-email .tab,
-#user-nickname .tab {
-    margin-right:15px;
-}
-#user-username .tab {
-    margin-right:2px;
+    margin-right:3px;
 }
 .profile-more a {
     margin: 0 5px;

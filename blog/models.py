@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 import markdown
+import emoji
 
 
 # Create your models here.
@@ -113,7 +114,12 @@ class Timeline(models.Model):
     def __str__(self):
         return self.title[:20]
 
+    def title_to_emoji(self):
+        return emoji.emojize(self.title,use_aliases=True)
+
     def content_to_markdown(self):
-        return markdown.markdown(self.content, extensions=[
+        # 先转换成emoji然后转换成markdown
+        to_emoji_content = emoji.emojize(self.content,use_aliases=True)
+        return markdown.markdown(to_emoji_content, extensions=[
             'markdown.extensions.extra',
         ])

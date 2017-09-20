@@ -1,5 +1,9 @@
 {% if user.socialaccount_set.exists %}
+{% if user.avatar.url != '/media/avatar/default.jpg' %}
+<img src="{{ user.avatar.url }}">
+{% else %}
 <img src="{{ user.socialaccount_set.all.0.get_avatar_url}}">
+{% endif %}
 {% else %}
 <img src="{{ user.avatar.url }}">
 {% endif %}

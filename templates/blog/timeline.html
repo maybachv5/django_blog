@@ -21,7 +21,7 @@
             <div class="timeline-badge {{ timeline.icon_color }}"><i class="{{ timeline.icon }}"></i></div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
-                    <h3 class="timeline-title">{{ timeline.title }}</h3>
+                    <h3 class="timeline-title">{{ timeline.title_to_emoji }}</h3>
                     <p>
                         <span class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ timeline.update_date|date:'Y-m-d'  }}</span>
                         <span class="pull-right" id="star" title="{% get_star_title timeline.star_num %}">{% get_star timeline.star_num %}</span>
@@ -41,4 +41,12 @@
 
 {% block footer %}
 {% include 'blog/tags/base-footer.html' %}
+{% endblock %}
+
+{% block js-file %}
+<script>
+$(document).ready(function(){
+    $(".timeline-body a").attr("target","_blank");
+});
+</script>
 {% endblock %}
