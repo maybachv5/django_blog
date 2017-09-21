@@ -42,7 +42,7 @@
         {% get_category_list as categories %}
         {% for cate in categories %}
         <li class="list-group-item">
-            <a href="#" title="点击查看【{{ cate.name }}】分类下所有文章"><strong>{{ cate.name }}</strong></a>
+            <a href="{{ cate.get_absolute_url }}" title="点击查看【{{ cate.name }}】分类下所有文章"><strong>{{ cate.name }}</strong></a>
             <span class="pull-right text-center" title="当前分类下有{{ cate.get_article_list.count }}篇文章发表">{{ cate.get_article_list.count }}</span>
         </li>
         {% endfor %}
@@ -59,7 +59,7 @@
         <div class="tag-cloud">
             {% get_tag_list as tag_list %}
             {% for tag in tag_list %}
-            <a href="#" class="tags" id="tag-{{ forloop.counter }}"
+            <a href="{{ tag.get_absolute_url }}" class="tags" id="tag-{{ forloop.counter }}"
                title="【{{ tag.name }}】标签下有{{ tag.get_article_list.count }}篇文章">{{ tag.name }}</a>
             {% endfor %}
         </div>

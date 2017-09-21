@@ -73,7 +73,7 @@
                 <!--标签云-->
                 <div class="tag-cloud">
                     {% for tag in article.tags.all %}
-                    <a class="label tags" id="tag-{{ forloop.counter }}" href="#">{{ tag.name }}</a>
+                    <a class="label tags" id="tag-{{ forloop.counter }}" href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
                     {% endfor %}
                 </div>
                 <!--标签云结束-->

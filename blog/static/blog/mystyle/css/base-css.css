@@ -15,6 +15,10 @@ padding-top:80px;
 }
 
 /*通用设置+++++++++++++++++++++++++++++++++++++++++++++++++*/
+.well {
+    border:none;
+    box-shadow:none;box-shadow
+}
 a {
     color:#222;
 }
@@ -189,6 +193,16 @@ a:hover {
 .article-item > .media-body {
     padding-left:10px;
 }
+/*分页++++++++++++++++++++++++++++++++++++++++++++++++*/
+.cut-page {
+    background:#fff;
+    border-radius:0;
+    padding: 15px 10px 15px 10px;
+    font-weight: 700;
+}
+.cut-page .no-page {
+    color:#8a8580;
+}
 /*文章详情页+++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*文章正文*/
 .post {
@@ -227,6 +241,13 @@ a:hover {
     max-width: 100%;
     height: auto;
 }
+.article-body a {
+    color:#337ab7;
+}
+.article-body a:hover {
+    color:#2ecc71;
+    text-decoration: none;
+}
 .post #next-post {
     margin: 15px 0;
     border-bottom:1px solid #eee;
@@ -241,7 +262,35 @@ a:hover {
 .toc > ul > li > a {
     font-weight:600;
 }
-
+/*分类列表、标签列表、搜索列表页++++++++++++++++++++++++++++++*/
+#result {
+    font-weight: 400;
+    background:#fff;
+    border-radius:0;
+}
+#result .tag {
+    color:#fff;
+    background:#1abc9c;
+    padding:5px 5px;
+    border-radius:.3em;
+}
+#has-result {
+    color:#1abc9c;
+    font-size:18px;
+    padding:0 3px;
+}
+#no-result {
+    color:#ff7975;
+    font-size:18px;
+    padding:0 3px;
+}
+/*搜索页++++++++++++++++++++++++++++++++++++++++*/
+.highlighted {
+    color:red;
+}
+.highlighted:hover {
+    color:#1abc9c;
+}
 /*用户登录页面+++++++++++++++++++++++++++++++++++++++++++++++*/
 /*注册登录表单*/
 a.secondaryAction {
@@ -305,8 +354,8 @@ a.secondaryAction:hover {
 /*回到顶部+++++++++++++++++++++++++++++++++++++++++++++++++*/
 #to-top {
     position: fixed;
-    bottom: 80px;
-    right: 30px;
+    bottom: 75px;
+    right: 4%;
     height: 36px;
     width: 36px;
     border-radius: 50%;
@@ -316,9 +365,10 @@ a.secondaryAction:hover {
     display:none;
     cursor: pointer;
     color: #fff;
+    opacity: .4;
 }
 #to-top:hover{
-    opacity: .7;
+    opacity: .9;
 }
 #to-top i {
     font-size: 18px;

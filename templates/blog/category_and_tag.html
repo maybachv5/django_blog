@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+{% load humanize %}
+
+{% block head_title %}文章检索：{{ search_name }}{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 main-box">
+            <div class="well" id="result">
+                <div>
+                    <span><span class="glyphicon glyphicon-search"></span> 当前{{ search_tag }}：</span>
+                    <span class="tag">{{ search_name }}</span>
+                    <span class="pull-right">
+                        共
+                        {% if paginator.count %}
+                        <span id="has-result">{{ paginator.count }}</span>
+                        {% else %}
+                        <span id="no-result">{{ paginator.count }}</span>
+                        {% endif %}
+                        篇
+                    </span>
+                </div>
+            </div>
+            <!--文章列表开始-->
+            {% for article in article_list %}
+            {% load_article_summary article %}
+            {% endfor %}
+            <!--文章列表结束-->
+
+            <!--分页开始-->
+            {% if is_paginated %}
+            {% load_pages %}
+            {% endif %}
+            <!--分页结束-->
+        </div>
+        <div class="col-md-4 right-box">
+            {% include 'blog/tags/base-right.html'%}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'blog/tags/base-footer.html' %}
+{% endblock %}

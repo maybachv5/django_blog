@@ -1,0 +1,104 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+{% load humanize %}
+{% load highlight %}
+
+{% block head_title %}文章搜索：{{ query }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 main-box">
+            <div class="well" id="result">
+                <div>
+                    <span><span class="glyphicon glyphicon-search"></span> 当前搜索：</span>
+                    <span class="tag">{{ query }}</span>
+                    <span class="pull-right">
+                        共
+                    {% if paginator.count %}
+                    <span id="has-result">{{ paginator.count }}</span>
+                    {% else %}
+                    <span id="no-result">{{ paginator.count }}</span>
+                    {% endif %}
+                        篇
+                    </span>
+                </div>
+            </div>
+            {% if query %}
+            {% for article in search_list %}
+            <div class="media article-item">
+                <div class="media-left media-middle hidden-xs">
+                    <a href="{{ article.object.get_absolute_url }}?title={{ article.object.title }}" target="_blank">
+                        <img class="media-object img-rounded" src="{{ article.object.img_link }}"
+                             alt="img_{{ article.object.id }}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a class="article-title" title="{{ article.object.title }}"
+                       href="{{ article.object.get_absolute_url }}">
+                        <h4 class="media-heading"><strong>{% highlight article.object.title with query %}</strong></h4>
+                    </a>
+                    <ul class="list-inline small article-infos info-top">
+                        <li class="article-author"><i class="glyphicon glyphicon-user"></i> {{ article.object.author }}
+                        </li>
+                        <li class="article-create-date">
+                            <i class="glyphicon glyphicon-time"></i> {{ article.object.create_date|naturaltime}}
+                        </li>
+                    </ul>
+                    <p>
+                        {% with article.object.body_to_markdown|safe as body %}
+                        {% highlight body with query max_length 100 %}
+                        {% endwith %}
+                    </p>
+
+                    <ul class=" list-inline small article-infos info-bottom">
+                        <li>
+                            <a class="article-category" href="{{ article.object.category.get_absolute_url }}"
+                               title="查看当前分类下更多文章">
+                                <i class="glyphicon glyphicon-th-list"></i> {{ article.object.category }}</a>
+                        </li>
+                        <li class="article-views"><i class="glyphicon glyphicon-eye-open"></i> {{ article.object.views }}
+                        </li>
+                        <li>
+                            <a class="article-comments" href="{{ article.object.get_absolute_url }}#comment-form"
+                               title="查看文章评论">
+                                <i class="glyphicon glyphicon-comment"></i> {{ article.object.comments }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty">没有找到搜索相关文章</div>
+            {% endfor %}
+            {% endif %}
+
+            <!--分页-->
+            {% if is_paginated %}
+            <div class="well text-center cut-page">
+                <ul class="list-inline">
+                    {% if page_obj.has_previous %}
+                    <a href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">上一页</a>
+                    {% else %}
+                    <li class="no-page" title="当前页已经是首页">上一页</li>
+                    {% endif %}
+                    <li>第 {{ page_obj.number }} / {{ paginator.num_pages }} 页</li>
+                    {% if page_obj.has_next %}
+                    <a href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">下一页</a>
+                    {% else %}
+                    <li class="no-page" title="当前页已经是末页">下一页</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-4 right-box">
+            {% include 'blog/tags/base-right.html'%}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'blog/tags/base-footer.html' %}
+{% endblock %}
+

@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'crispy_forms',  # bootstrap表单样式
 
     'blog',  # 博客应用
-    'imagekit'       # 上传图片的应用
+    'imagekit',  # 上传图片的应用
+    'haystack',  # 全用搜索应用 这个要放在其他应用之前
 ]
 
 # allauth配置
@@ -205,3 +206,14 @@ MESSAGE_TAGS = {
     message_constants.WARNING: 'alert alert-warning alert-dismissible',
     message_constants.ERROR: 'alert alert-danger alert-dismissible'
 }
+
+# 全文搜索应用配置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',  # 选择语言解析器为自己更换的结巴分词
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),  # 保存索引文件的地址，选择主目录下，这个会自动生成
+    }
+}
+
+# HAYSTACK_SIGNAL_PROCESSOR  =  'haystack.signals.BaseSignalProcessor'
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
