@@ -17,6 +17,7 @@ from django.conf.urls import url,include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
+from blog.feeds import AllArticleRssFeed
 
 
 urlpatterns = [
@@ -24,5 +25,6 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),                # allauth
     url(r'accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
     url('',include('blog.urls',namespace='blog')),              # blog
+    url(r'^all/rss/$',AllArticleRssFeed(),name='rss'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 加入这个才能显示media文件
