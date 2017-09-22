@@ -396,10 +396,10 @@ footer .navbar a:hover {
 }
 /*404页面+++++++++++++++++++++++*/
 .errorpage {
-    margin:80px 15px;
+    margin:30px 15px;
 }
 .errormsg {
-    margin:50px 0;
+    margin:30px 0;
     color: #6d6d7b;
 }
 .errormsg h3 {
