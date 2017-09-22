@@ -8,11 +8,14 @@
 {% block content %}
 <div class="container">
     <div class="row errorpage">
-        <div class="col-md-8 error-img text-center">
-            <img class="img-responsive" src="{% static 'blog/img/404.png'%}">
-        </div>
-        <div class="col-md-4 error-msg">
-
+        <div class="col-md-6 col-md-offset-3 error-img text-center">
+            <div class="errorimg">
+                <img class="img-responsive center-block" src="http://www.stopfollow.com/static/blog/img/404.png">
+            </div>
+            <div class="errormsg">
+                <h3>哇哦！你好像访问到了异次元世界...</h3>
+                <a href="?next={{ request.path }}">返回地球</a>
+            </div>
         </div>
     </div>
 </div>

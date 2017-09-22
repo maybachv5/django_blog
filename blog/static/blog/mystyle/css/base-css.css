@@ -394,7 +394,31 @@ footer .navbar a:hover {
     color:#1abc9c;
     text-decoration:none;
 }
-
+/*404页面+++++++++++++++++++++++*/
+.errorpage {
+    margin:80px 15px;
+}
+.errormsg {
+    margin:50px 0;
+    color: #6d6d7b;
+}
+.errormsg h3 {
+    margin:25px 0;
+}
+.errormsg a {
+    text-decoration: none;
+    background:#fff;
+    padding:.6em 1em;
+    color:#FF7150;
+    border: 1px solid #ff7150;
+    border-radius: 2px;
+    line-height: 35px;
+}
+.errormsg a:hover {
+    background:#ff7150;
+    padding:.6em 1em;
+    color:#fff;
+}
 /*小屏幕（手机平板，小于768px）*/
 @media (min-width:768px){
     .carousel-caption > p {

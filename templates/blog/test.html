@@ -1,48 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+.errorpage {
+    margin:80px 15px;
+}
+.errormsg {
+    margin:50px 0;
+    color: #6d6d7b;
+}
+.errormsg h3 {
+    margin:25px 0;
+}
+.errormsg a {
+    text-decoration: none;
+    background:#fff;
+    padding:.6em 1em;
+    color:#FF7150;
+    border: 1px solid #ff7150;
+    border-radius: 2px;
+    line-height: 35px;
+}
+.errormsg a:hover {
+    background:#ff7150;
+    padding:.6em 1em;
+    color:#fff;
+}
+    </style>
+</head>
+<body>
+
 <div class="container">
-    <div class="page-header">
-        <h1 id="timeline">Timeline</h1>
+    <div class="row errorpage">
+        <div class="col-md-6 col-md-offset-3 error-img text-center">
+            <div class="errorimg">
+                <img class="img-responsive center-block" src="http://www.stopfollow.com/static/blog/img/404.png">
+            </div>
+            <div class="errormsg">
+                <h3>哇哦！你好像访问到了异次元世界...</h3>
+                <a href="?next={{ request.path }}">返回地球</a>
+            </div>
+        </div>
     </div>
-    <ul class="timeline">
-        <li>
-            <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                    <p>
-                        <small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter
-                        </small>
-                    </p>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis
-                        porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros
-                        vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga.
-                        Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce
-                        receita de bolis, mais bolis eu num gostis.</p>
-                </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis
-                        porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros
-                        vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga.
-                        Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce
-                        receita de bolis, mais bolis eu num gostis.</p>
-                    <p>Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé,
-                        cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a,
-                        posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper.
-                        Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque
-                        laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo
-                        massa.</p>
-                </div>
-            </div>
-        </li>
-    </ul>
 </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
