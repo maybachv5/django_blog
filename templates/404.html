@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load humanize %}
+{% load blog_tags %}
+
+{% block head_title %}博客主页{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row errorpage">
+        <div class="col-md-8 error-img text-center">
+            <img class="img-responsive" src="{% static 'blog/img/404.png'%}">
+        </div>
+        <div class="col-md-4 error-msg">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'blog/tags/base-footer.html' %}
+{% endblock %}

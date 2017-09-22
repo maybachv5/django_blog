@@ -9,6 +9,6 @@ urlpatterns = [
     url(r'^article/(?P<article_id>\d+)/$',DetailView.as_view(),name='detail'),
     url(r'^category/(?P<pk>\d+)/$',CategoryView.as_view(),name='category'),
     url(r'^tag/(?P<pk>\d+)/$',TagView.as_view(),name='tag'),
-    url(r'^search/?$', MySearchView.as_view(), name='search_view'),  # 自己重写的URL
+    url(r'^search/?$', MySearchView.as_view(), name='search_view'),
 
 ]

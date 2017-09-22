@@ -14,3 +14,12 @@ $("#to-top").click(function () {
         $('body,html').animate({ scrollTop: 0 }, speed);
         return false;
  });
+//导航栏鼠标滑过自动展开下拉菜单
+$(document).ready(function(){
+ var $dropdownLi = $('.navbar-fixed-top li.dropdown');
+ $dropdownLi.mouseover(function() {
+ $(this).addClass('open');
+ }).mouseout(function() {
+ $(this).removeClass('open');
+ });
+});

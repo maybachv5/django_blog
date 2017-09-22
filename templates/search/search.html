@@ -28,7 +28,7 @@
             {% for article in search_list %}
             <div class="media article-item">
                 <div class="media-left media-middle hidden-xs">
-                    <a href="{{ article.object.get_absolute_url }}?title={{ article.object.title }}" target="_blank">
+                    <a href="{{ article.object.get_absolute_url }}">
                         <img class="media-object img-rounded" src="{{ article.object.img_link }}"
                              alt="img_{{ article.object.id }}">
                     </a>
@@ -60,7 +60,7 @@
                         <li class="article-views"><i class="glyphicon glyphicon-eye-open"></i> {{ article.object.views }}
                         </li>
                         <li>
-                            <a class="article-comments" href="{{ article.object.get_absolute_url }}#comment-form"
+                            <a class="article-comments" href="{{ article.object.get_absolute_url }}"
                                title="查看文章评论">
                                 <i class="glyphicon glyphicon-comment"></i> {{ article.object.comments }}</a>
                         </li>

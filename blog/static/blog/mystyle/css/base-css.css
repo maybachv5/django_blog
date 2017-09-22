@@ -394,6 +394,7 @@ footer .navbar a:hover {
     color:#1abc9c;
     text-decoration:none;
 }
+
 /*小屏幕（手机平板，小于768px）*/
 @media (min-width:768px){
     .carousel-caption > p {

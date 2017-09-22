@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from .models import Article, Tag, Category, Timeline
 from django.views import generic
 # Create your views here.
@@ -11,16 +9,12 @@ from django.shortcuts import get_object_or_404
 
 
 class IndexView(generic.ListView):
-    # 指定视图
     template_name = 'blog/index.html'
-    # 重命名返回的列表
     context_object_name = 'article_list'
-    # 设定每页显示的文章数量，这个是内置视图函数自带的
     paginate_by = 10
 
     def get_queryset(self):
-        # 返回按照创建时间逆排序的前5个
-        return Article.objects.filter(status='p').order_by('-create_date')
+        return Article.objects.filter(status='p')
 
 
 class TimelineView(generic.ListView):
@@ -38,7 +32,8 @@ class DetailView(generic.DetailView):
     context_object_name = 'article'
 
     def get_queryset(self):
-        return Article.objects.filter(status='p')
+        queryset = super(DetailView,self).get_queryset()
+        return queryset.filter(status='p')
 
     def get_object(self):
         obj = super(DetailView, self).get_object()
@@ -64,7 +59,7 @@ class CategoryView(generic.ListView):
     context_object_name = 'article_list'
     paginate_by = 10
 
-    def get_queryset(self):
+    def get_queryset(self,**kwargs):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
         return super(CategoryView, self).get_queryset().filter(category=cate, status='p')
 
@@ -93,7 +88,6 @@ class TagView(generic.ListView):
         context_data['search_name'] = tag
         return context_data
 
-
 # 重写搜索视图，可以增加一些额外的参数，且可以重新定义名称
 class MySearchView(SearchView):
     context_object_name = 'search_list'
@@ -101,4 +95,11 @@ class MySearchView(SearchView):
 
     def get_queryset(self):
         queryset = super(MySearchView, self).get_queryset()
+        # 这个过滤有问题，并没有把status='d'的过滤掉，这是个bug目前不得解
         return queryset.filter(status='p')
+
+
+
+
+
+

@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',  # 添加人性化过滤器
 
     'oauth',  # 自定义用户应用
-
     # allauth需要注册的应用
     'django.contrib.sites',
     'allauth',
@@ -56,10 +55,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
 
     'crispy_forms',  # bootstrap表单样式
-
-    'blog',  # 博客应用
     'imagekit',  # 上传图片的应用
+
     'haystack',  # 全用搜索应用 这个要放在其他应用之前
+    'blog',  # 博客应用
+
+
 ]
 
 # allauth配置
