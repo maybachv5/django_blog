@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
     'haystack',  # 全用搜索应用 这个要放在其他应用之前
     'blog',  # 博客应用
-
+    'comment', # 评论应用
 
 ]
 
