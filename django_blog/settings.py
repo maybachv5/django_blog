@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2020wu)kcm-0(_7z^+!e$i8!d^qo&@^u72ht#m+%p_v#5g^)5a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.stopfollow.com']
 
@@ -194,6 +194,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 网站上下文信息
+DEFAULT_IMG_LINL = 'http://cdn.stopfollow.com/summary_default.png'
 SITE_DESCRIPTION = '一个后端使用Django框架，前端使用Bootstrap3搭建的个人博客，用于Python的学习和交流。'
 SITE_KEYWORDS = 'Python，Scrapy爬虫，Django blog，个人博客'
 

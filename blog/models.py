@@ -43,7 +43,7 @@ class Category(models.Model):
 
 
 class Article(models.Model):
-    IMG_LINK = 'http://ovyn3jt7b.bkt.clouddn.com/img04.jpg'
+    IMG_LINK = settings.DEFAULT_IMG_LINL
 
     STATUS_CHOICE = (
         ('d', '草稿'),
@@ -139,3 +139,4 @@ class Timeline(models.Model):
         return markdown.markdown(to_emoji_content, extensions=[
             'markdown.extensions.extra',
         ])
+
