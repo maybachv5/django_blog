@@ -254,6 +254,13 @@ a:hover {
     margin: 15px 0;
     border-bottom:1px solid #eee;
 }
+.article-body table th,
+.article-body table td {
+    padding:2px 15px;
+    border: 1px solid #95a5a6;
+}
+
+
 /*文章目录*/
 /*这里只给了固定，但是还必须设定宽度，所以宽度在不同屏幕中设置了不同的值*/
 .toc a {
