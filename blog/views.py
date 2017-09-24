@@ -5,7 +5,7 @@ import markdown
 from markdown.extensions.toc import TocExtension  # 锚点的拓展
 from django.utils.text import slugify  # 这个目测是URL支持中文的拓展
 from haystack.generic_views import SearchView  # 导入搜索视图
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 
 class IndexView(generic.ListView):
@@ -32,7 +32,7 @@ class DetailView(generic.DetailView):
     context_object_name = 'article'
 
     def get_queryset(self):
-        queryset = super(DetailView,self).get_queryset()
+        queryset = super(DetailView, self).get_queryset()
         return queryset.filter(status='p')
 
     def get_object(self):
@@ -59,7 +59,7 @@ class CategoryView(generic.ListView):
     context_object_name = 'article_list'
     paginate_by = 10
 
-    def get_queryset(self,**kwargs):
+    def get_queryset(self, **kwargs):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
         return super(CategoryView, self).get_queryset().filter(category=cate, status='p')
 
@@ -88,6 +88,7 @@ class TagView(generic.ListView):
         context_data['search_name'] = tag
         return context_data
 
+
 # 重写搜索视图，可以增加一些额外的参数，且可以重新定义名称
 class MySearchView(SearchView):
     context_object_name = 'search_list'
@@ -97,9 +98,4 @@ class MySearchView(SearchView):
         queryset = super(MySearchView, self).get_queryset()
         # 这个过滤有问题，并没有把status='d'的过滤掉，这是个bug目前不得解
         return queryset.filter(status='p')
-
-
-
-
-
 

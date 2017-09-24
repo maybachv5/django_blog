@@ -10,5 +10,4 @@ urlpatterns = [
     url(r'^category/(?P<pk>\d+)/$',CategoryView.as_view(),name='category'),
     url(r'^tag/(?P<pk>\d+)/$',TagView.as_view(),name='tag'),
     url(r'^search/?$', MySearchView.as_view(), name='search_view'),
-
 ]

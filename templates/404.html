@@ -14,9 +14,10 @@
             </div>
             <div class="errormsg">
                 <h3>哇哦！你好像访问到了异次元世界...</h3>
-                <a href="?next={{ request.path }}">返回地球</a>
+                <a href="javascript:history.go(-1);">返回地球</a>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
