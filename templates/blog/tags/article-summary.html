@@ -16,7 +16,7 @@
                 <i class="glyphicon glyphicon-time"></i> {{ article.create_date|naturaltime}}
             </li>
         </ul>
-        <p>{{ article.summary|truncatechars:100 }}</p>
+        <p>{{ article.summary|truncatechars:130 }}</p>
         <ul class=" list-inline small article-infos info-bottom">
             <li>
                 <a class="article-category" href="{{ article.category.get_absolute_url }}" title="查看当前分类下更多文章">

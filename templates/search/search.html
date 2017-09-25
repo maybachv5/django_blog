@@ -47,7 +47,7 @@
                     </ul>
                     <p>
                         {% with article.object.body_to_markdown|safe as body %}
-                        {% highlight body with query max_length 100 %}
+                        {% highlight body with query max_length 130 %}
                         {% endwith %}
                     </p>
 
