@@ -193,6 +193,10 @@ a:hover {
 .article-item > .media-body {
     padding-left:10px;
 }
+.article-item .media-body .article-infos,
+.article-item .media-body p {
+    margin-bottom: 5px;
+}
 /*分页++++++++++++++++++++++++++++++++++++++++++++++++*/
 .cut-page {
     background:#fff;

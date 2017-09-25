@@ -19,12 +19,20 @@ from django.conf import settings
 from django.contrib import admin
 from blog.feeds import AllArticleRssFeed
 
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import ArticleSitemap
+
+# 网站地图
+sitemaps = {
+    'articles':ArticleSitemap
+}
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),                # allauth
     url(r'accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
     url('',include('blog.urls',namespace='blog')),              # blog
-    url(r'^all/rss/$',AllArticleRssFeed(),name='rss'),
+    url(r'^blog/rss/$',AllArticleRssFeed(),name='rss'),
+    url(r'^sitemap\.xml$',sitemap,{'sitemaps':sitemaps},name='django.contrib.sitemaps.views.sitemap'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 加入这个才能显示media文件

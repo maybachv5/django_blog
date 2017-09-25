@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',  # 添加人性化过滤器
+    'django.contrib.sitemaps',  # 网站地图
 
     'oauth',  # 自定义用户应用
     # allauth需要注册的应用
