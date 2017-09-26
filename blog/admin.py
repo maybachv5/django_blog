@@ -34,12 +34,12 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('slug','id', 'name')
+    list_display = ('name', 'id', 'slug')
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('slug','id', 'name')
+    list_display = ('name', 'id', 'slug')
 
 
 # 自定义管理站点的名称和URL标题
@@ -52,8 +52,8 @@ class TimelineAdmin(admin.ModelAdmin):
     list_display = ('title', 'side', 'update_date', 'icon', 'icon_color',)
     fieldsets = (
         ('图标信息', {'fields': (('icon', 'icon_color'),)}),
-        ('时间位置', {'fields': (('side', 'update_date','star_num'),)}),
+        ('时间位置', {'fields': (('side', 'update_date', 'star_num'),)}),
         ('主要内容', {'fields': ('title', 'content')}),
     )
     date_hierarchy = 'update_date'
-    list_filter = ('star_num','update_date')
+    list_filter = ('star_num', 'update_date')

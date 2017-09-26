@@ -60,11 +60,11 @@ class CategoryView(generic.ListView):
     paginate_by = 10
 
     def get_queryset(self, **kwargs):
-        cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
+        cate = get_object_or_404(Category, slug=self.kwargs.get('slug'))
         return super(CategoryView, self).get_queryset().filter(category=cate, status='p')
 
     def get_context_data(self, **kwargs):
-        cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
+        cate = get_object_or_404(Category, slug=self.kwargs.get('slug'))
         context_data = super(CategoryView, self).get_context_data()
         context_data['search_tag'] = '分类'
         context_data['search_name'] = cate
@@ -78,11 +78,11 @@ class TagView(generic.ListView):
     paginate_by = 10
 
     def get_queryset(self, **kwargs):
-        tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
+        tag = get_object_or_404(Tag, slug=self.kwargs.get('slug'))
         return super(TagView, self).get_queryset().filter(tags=tag, status='p')
 
     def get_context_data(self, **kwargs):
-        tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
+        tag = get_object_or_404(Tag, slug=self.kwargs.get('slug'))
         context_data = super(TagView, self).get_context_data()
         context_data['search_tag'] = '标签'
         context_data['search_name'] = tag

@@ -10,7 +10,7 @@ from django.utils.text import slugify
 
 class Tag(models.Model):
     name = models.CharField('文章标签', max_length=15)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name = '标签'
@@ -24,7 +24,7 @@ class Tag(models.Model):
         return Article.objects.filter(tags=self, status='p')
 
     def get_absolute_url(self):
-        return reverse('blog:tag', kwargs={'pk': self.pk})
+        return reverse('blog:tag', kwargs={'slug': self.slug})
 
     def save(self,*args,**kwargs):
         self.slug = slugify(self.slug)
@@ -33,7 +33,7 @@ class Tag(models.Model):
 
 class Category(models.Model):
     name = models.CharField('文章分类', max_length=15)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name = '分类'
@@ -43,7 +43,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('blog:category', kwargs={'pk': self.pk})
+        return reverse('blog:category', kwargs={'slug': self.slug})
 
     def get_article_list(self):
         return Article.objects.filter(category=self, status='p')
