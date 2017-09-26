@@ -8,6 +8,8 @@ django-appconf==1.0.2
 django-crispy-forms==1.6.1
 django-haystack==2.6.1
 django-imagekit==4.0.1
+emoji==0.4.5
+gunicorn==19.7.1
 idna==2.6
 Markdown==2.6.8
 oauthlib==2.0.3
@@ -23,3 +25,4 @@ requests-oauthlib==0.8.0
 six==1.10.0
 urllib3==1.22
 Whoosh==2.7.4
+jieba==0.39
