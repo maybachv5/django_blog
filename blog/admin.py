@@ -34,12 +34,12 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('slug','id', 'name')
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('slug','id', 'name')
 
 
 # 自定义管理站点的名称和URL标题

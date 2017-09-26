@@ -3,12 +3,14 @@ from django.conf import settings
 import markdown
 import emoji
 from django.shortcuts import reverse
+from django.utils.text import slugify
 
 
 # Create your models here.
 
 class Tag(models.Model):
     name = models.CharField('文章标签', max_length=15)
+    slug = models.SlugField(blank=True)
 
     class Meta:
         verbose_name = '标签'
@@ -24,9 +26,14 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('blog:tag', kwargs={'pk': self.pk})
 
+    def save(self,*args,**kwargs):
+        self.slug = slugify(self.slug)
+        super(Tag,self).save()
+
 
 class Category(models.Model):
     name = models.CharField('文章分类', max_length=15)
+    slug = models.SlugField(blank=True)
 
     class Meta:
         verbose_name = '分类'
@@ -40,6 +47,10 @@ class Category(models.Model):
 
     def get_article_list(self):
         return Article.objects.filter(category=self, status='p')
+
+    def save(self,*args,**kwargs):
+        self.slug = slugify(self.slug)
+        super(Category,self).save()
 
 
 class Article(models.Model):
