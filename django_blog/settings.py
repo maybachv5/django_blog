@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2020wu)kcm-0(_7z^+!e$i8!d^qo&@^u72ht#m+%p_v#5g^)5a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.stopfollow.com']
 
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
     'haystack',  # 全用搜索应用 这个要放在其他应用之前
     'blog',  # 博客应用
-    'comment', # 评论应用
+    'comment',  # 评论应用
 
 ]
 
@@ -197,7 +197,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 网站上下文信息
 DEFAULT_IMG_LINL = 'http://cdn.stopfollow.com/summary_default.png'
 SITE_DESCRIPTION = '一个后端使用Django框架，前端使用Bootstrap3搭建的个人博客，用于Python的学习和交流。'
-SITE_KEYWORDS = 'Python，Scrapy爬虫，Django blog，个人博客'
+SITE_KEYWORDS = 'Python，爬虫，Django，blog, 个人博客'
 
 # messages 标签设置，设置成bootstrap3样式
 from django.contrib.messages import constants as message_constants

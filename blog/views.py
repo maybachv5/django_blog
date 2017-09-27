@@ -7,6 +7,8 @@ from django.utils.text import slugify  # 这个目测是URL支持中文的拓展
 from haystack.generic_views import SearchView  # 导入搜索视图
 from django.shortcuts import get_object_or_404, render
 
+def Aboutview(request):
+    return render(request,'blog/about.html',context={})
 
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'

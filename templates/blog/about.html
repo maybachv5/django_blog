@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block head_title %}博客主页{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="jumbotron">
+                <h1>Life is short, you need Python!</h1>
+                <hr>
+                <p>
+                    这是一个以Django作为后端，以Bootstrap3作为前端框架而搭建的个人博客。建博的最初目的是为了学习Django框架，
+                    后来随着博客功能的日渐丰富，博客涉及到的东西越来越多，索性就把这个博客部署到了服务器上。现在，这个博客的主要
+                    功能是用来记录博主在学习Python以及其他相关编程语言中的一些笔记。
+                </p>
+                <p>
+                    本着学习和分享的精神，本博客源码开源。查看博客源代码，请移步
+                    <a href="https://github.com/Hopetree/django_blog" target="_blank">Github博客源码</a> 查看。
+                </p>
+                <a class="btn btn-info" title="查看博客Timeline，了解博客建站历程"
+                   href="{% url 'blog:timeline'%}" role="button">Learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

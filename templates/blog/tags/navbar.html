@@ -34,7 +34,7 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
-                <li><a href="#">关于</a></li>
+                <li><a href="{% url 'blog:about' %}">关于</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search" method="get" id="searchform"
                   action="{% url 'blog:search_view'%}">

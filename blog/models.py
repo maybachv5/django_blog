@@ -15,6 +15,7 @@ class Tag(models.Model):
     class Meta:
         verbose_name = '标签'
         verbose_name_plural = verbose_name
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -38,6 +39,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = '分类'
         verbose_name_plural = verbose_name
+        ordering = ['name']
 
     def __str__(self):
         return self.name

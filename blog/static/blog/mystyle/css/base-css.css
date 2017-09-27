@@ -433,6 +433,25 @@ footer .navbar a:hover {
     padding:.6em 1em;
     color:#fff;
 }
+/*about页面++++++++++++++++++++++++++++++++*/
+.jumbotron {
+    background-color: #fff;
+}
+.jumbotron h1 {
+    font-size:40px;
+}
+.jumbotron hr {
+    border-left: 200px solid #2ecc71;
+}
+.jumbotron p {
+    text-indent:1.8em
+}
+.jumbotron p > a {
+    color:#16a085;
+}
+.jumbotron p > a:hover {
+    color:#3498db;
+}
 /*小屏幕（手机平板，小于768px）*/
 @media (min-width:768px){
     .carousel-caption > p {
