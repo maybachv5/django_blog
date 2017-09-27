@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 
-{% block head_title %}博客主页{% endblock %}
+{% block head_title %}关于博客{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -18,7 +18,7 @@
                     本着学习和分享的精神，本博客源码开源。查看博客源代码，请移步
                     <a href="https://github.com/Hopetree/django_blog" target="_blank">Github博客源码</a> 查看。
                 </p>
-                <a class="btn btn-info" title="查看博客Timeline，了解博客建站历程"
+                <a class="btn btn-primary btn-lg" title="查看博客Timeline，了解博客建站历程"
                    href="{% url 'blog:timeline'%}" role="button">Learn more</a>
             </div>
         </div>
