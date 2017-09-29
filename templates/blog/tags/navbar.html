@@ -52,10 +52,10 @@
                        role="button" aria-haspopup="true" aria-expanded="false" title="{{ user|get_show_name }}，欢迎你！">
                         {% get_show_avatar user %} <span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'oauth:profile' %}">个人中心</a></li>
-                        <li><a href="#">消息</a></li>
-                        <li><a href="{% url 'account_logout' %}">退出</a></li>
+                    <ul class="dropdown-menu" id="is_log">
+                        <li><a href="{% url 'oauth:profile' %}"><i class="glyphicon glyphicon-user"></i>个人中心</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>消息</a></li>
+                        <li><a href="{% url 'account_logout' %}"><i class="glyphicon glyphicon-log-out"></i>退出</a></li>
                     </ul>
                 </li>
                 {% else %}

@@ -74,6 +74,10 @@ a:hover {
     color: #fff;
     background-color: #16a085;
 }
+#is_log i {
+    margin-right:1em;
+    color:#34495e;
+}
 /*导航显示头像*/
 .dropdown > #user-avatar {
     padding:5px 15px;
