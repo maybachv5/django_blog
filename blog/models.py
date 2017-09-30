@@ -62,7 +62,7 @@ class Article(models.Model):
         ('d', '草稿'),
         ('p', '发表'),
     )
-    status = models.CharField('文章状态', max_length=1, default='d', choices=STATUS_CHOICE)
+    status = models.CharField('文章状态', max_length=1, default='p', choices=STATUS_CHOICE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者')
     title = models.CharField(max_length=30, verbose_name='文章标题')
     summary = models.TextField('文章摘要', max_length=200, default='文章摘要是用来展示的，请务必填写...')
