@@ -152,6 +152,7 @@
                 data:{'rep_id':rep_id,'content':content,'belong':belong_id,'parent_id':parent_id},
                 dataType:'json',
                 success:function(ret){
+                    alert(ret.msg)
                     window.location.reload();
                 },
                 error:function(ret){
