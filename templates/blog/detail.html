@@ -121,6 +121,10 @@
             $('#id_content').val('');
         });
 
+        $('.cannot-rep').click(function(){
+            alert("登录后才能回复")
+        });
+
         <!--点击提交评论，发送ajax-->
         $('.comment-post').click(function(){
             var has_id = $('.rep-to').attr('id');

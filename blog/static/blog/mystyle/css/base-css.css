@@ -302,7 +302,18 @@ a:hover {
     word-wrap:break-word;
     display:block;
 }
+.not-login {
+    margin:20px 0;
+    padding:2em 0;
+}
 
+.not-login a {
+    color:red;
+}
+.not-login a:hover {
+    color:#2ecc71;
+    text-decoration:underline;
+}
 /*文章目录*/
 /*这里只给了固定，但是还必须设定宽度，所以宽度在不同屏幕中设置了不同的值*/
 .toc a {
@@ -402,6 +413,7 @@ a.secondaryAction:hover {
 .profile-more a {
     margin: 0 5px;
 }
+
 /*回到顶部+++++++++++++++++++++++++++++++++++++++++++++++++*/
 #to-top {
     position: fixed;

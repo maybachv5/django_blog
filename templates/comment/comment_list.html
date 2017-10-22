@@ -3,25 +3,27 @@
 {% load blog_tags %}
 {% load humanize %}
 
-
+{% if user.is_authenticated %}
 <div class="comment-form" id="com-form">
     <div class="hidden rep-to">
         <span>回复&nbsp;</span>
         @<span class="strong" id="rep-user"></span>
     </div>
     <div>
-        <textarea class="form-control" id="id_content" name="content" rows="5" required></textarea>
+        <textarea class="form-control" id="id_content" name="content"
+                  placeholder="评论支持markdown语法和emoji表情语法" rows="5" required></textarea>
     </div>
     <div class="comment-btns pull-right">
         <button class="btn btn-danger hidden " id="cancel-reply">取消回复</button>
-        {% if user.is_authenticated %}
+
         <button class="btn btn-info comment-post">提交评论</button>
-        {% else %}
-        <button type="button" class="btn btn-info" disabled="disabled" data-toggle="tooltip"
-                    data-placement="left" title="登录后才能评论！">提交评论</button>
-        {% endif %}
     </div>
 </div>
+{% else %}
+<div class="well h4 text-center not-login">
+    <a href="{% url 'account_login' %}?next={{ request.path }}">登录</a>后参与评论
+</div>
+{% endif %}
 <div class="comment-count">
     <strong>{% get_comment_author_count article %}人参与&nbsp;|&nbsp;{{ article.comments }}条评论</strong>
 </div>
@@ -45,8 +47,7 @@
                     data-name="{{ each.author }}">回复
             </button>
             {% else %}
-            <button type="button" class="btn btn-default btn-xs" disabled="disabled" data-toggle="tooltip"
-                    data-placement="right" title="请先登录！">回复</button>
+            <button class="btn btn-default btn-xs cannot-rep" >回复</button>
             {% endif %}
         </div>
     </div>
@@ -77,8 +78,7 @@
                 回复
             </button>
             {% else %}
-            <button type="button" class="btn btn-default btn-xs" disabled="disabled" data-toggle="tooltip"
-                    data-placement="right" title="请先登录！">回复</button>
+            <button class="btn btn-default btn-xs cannot-rep" >回复</button>
             {% endif %}
         </div>
         </div>
