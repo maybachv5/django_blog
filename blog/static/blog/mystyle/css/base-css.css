@@ -267,7 +267,41 @@ a:hover {
     padding:2px 15px;
     border: 1px solid #95a5a6;
 }
-
+/*文章评论*/
+.comment-count {
+    margin:15px 0;
+    font-size:1.2em;
+}
+.comment-form {
+    margin:20px 0;
+}
+.comment-btns {
+    margin:10px 0;
+}
+.rep-to {
+    margin:0.3em 0;
+}
+.comment-list .media {
+    margin:10px 0;
+}
+.comment-list #com-avatar img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.parent-comments {
+    margin:15px 0;
+    padding-top:15px;
+    border-top: 1px solid #f0f0f0;
+}
+.child-comments {
+    margin:10px 0;
+    border-top: 1px dashed #f0f0f0;
+}
+.com-body {
+    word-wrap:break-word;
+    display:block;
+}
 
 /*文章目录*/
 /*这里只给了固定，但是还必须设定宽度，所以宽度在不同屏幕中设置了不同的值*/

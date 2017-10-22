@@ -1,0 +1,89 @@
+{% load static %}
+{% load comment_tags %}
+{% load blog_tags %}
+{% load humanize %}
+
+
+<div class="comment-form" id="com-form">
+    <div class="hidden rep-to">
+        <span>回复&nbsp;</span>
+        @<span class="strong" id="rep-user"></span>
+    </div>
+    <div>
+        <textarea class="form-control" id="id_content" name="content" rows="5" required></textarea>
+    </div>
+    <div class="comment-btns pull-right">
+        <button class="btn btn-danger hidden " id="cancel-reply">取消回复</button>
+        {% if user.is_authenticated %}
+        <button class="btn btn-info comment-post">提交评论</button>
+        {% else %}
+        <button type="button" class="btn btn-info" disabled="disabled" data-toggle="tooltip"
+                    data-placement="left" title="登录后才能评论！">提交评论</button>
+        {% endif %}
+    </div>
+</div>
+<div class="comment-count">
+    <strong>{% get_comment_author_count article %}人参与&nbsp;|&nbsp;{{ article.comments }}条评论</strong>
+</div>
+{% get_comment_list article as comments %}
+<div class="comment-list">
+    {% for each in comments %}
+    <div class="parent-comments">
+        <div class="media">
+            <div class="media-left media-middle" id="com-avatar">
+                {% get_show_avatar each.author %}
+            </div>
+            <div class="media-body">
+                <h5 class="media-heading">{{ each.author.username }}</h5>
+                <p class="small">{{ forloop.counter }}楼&nbsp;-&nbsp;{{ each.create_date|naturaltime }}</p>
+            </div>
+        </div>
+        <div class="com-body">{{ each.content_to_markdown|safe }}</div>
+        <div>
+            {% if user.is_authenticated %}
+            <button class="btn btn-default btn-xs btn-reply" id="rep-{{ each.id }}" data-parent="{{ each.id }}"
+                    data-name="{{ each.author }}">回复
+            </button>
+            {% else %}
+            <button type="button" class="btn btn-default btn-xs" disabled="disabled" data-toggle="tooltip"
+                    data-placement="right" title="请先登录！">回复</button>
+            {% endif %}
+        </div>
+    </div>
+    {% get_child_comments each as childs %}
+    {% if childs %}
+    <ul>
+        {% for each_child in childs %}
+        <div class="child-comments">
+            <div class="media">
+            <div class="media-left media-middle" id="com-avatar">
+                {% get_show_avatar each_child.author %}
+            </div>
+            <div class="media-body">
+                <h5 class="media-heading">
+                    {{ each_child.author.username }}
+                    <i class="glyphicon glyphicon-share-alt"></i>
+                    @{{ each_child.rep_to.author.username }}
+                </h5>
+                <p class="small">{{ each_child.create_date|naturaltime }}</p>
+            </div>
+        </div>
+        <div class="com-body">{{ each_child.content_to_markdown|safe }}</div>
+        <!--<p>我的父亲是：{{ each_child.parent }}</p>-->
+        <div>
+            {% if user.is_authenticated %}
+            <button class="btn btn-default btn-xs btn-reply" id="rep-{{ each_child.id }}" data-parent="{{ each.id }}"
+                    data-name="{{ each_child.author }}">
+                回复
+            </button>
+            {% else %}
+            <button type="button" class="btn btn-default btn-xs" disabled="disabled" data-toggle="tooltip"
+                    data-placement="right" title="请先登录！">回复</button>
+            {% endif %}
+        </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </ul>
+    {% endfor %}
+</div>
