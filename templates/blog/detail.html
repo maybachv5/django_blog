@@ -152,12 +152,7 @@
                 data:{'rep_id':rep_id,'content':content,'belong':belong_id,'parent_id':parent_id},
                 dataType:'json',
                 success:function(ret){
-                    <!--window.location.reload();-->
-                    $('#id_content').val('');
-                    alert(ret.msg)
                     window.location.reload();
-                    $('html,body').animate({scrollTop:$(ret.tag).offset().top},100)
-
                 },
                 error:function(ret){
                     alert(ret.msg);
