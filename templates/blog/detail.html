@@ -99,74 +99,8 @@
 {% endblock %}
 
 {% block js-file%}
-<script>
-    $(document).ready(function(){
-        <!--点击评论中回复按钮的时候定位到评论框，设置回复的信息-->
-        $('.btn-reply').click(function(){
-            $('#id_content').val('');
-            $('#cancel-reply').removeClass('hidden');
-            var rep_id = $(this).attr('id');
-            var rep_name = $(this).attr('data-name');
-            var par_id = $(this).attr('data-parent');
-            $('.rep-to').removeClass('hidden').attr('id',rep_id).attr('data-par',par_id);
-            $('#rep-user').text(rep_name);
-            $('html,body').animate({scrollTop:$('#com-form').offset().top-90},100)
-        });
-
-        <!--点击取消回复的时候，删除回复的的信息-->
-        $('#cancel-reply').click(function(){
-            $('.rep-to').addClass('hidden').removeAttr("id").removeAttr("data-par");
-            $('#rep-user').text('');
-            $('#cancel-reply').addClass('hidden');
-            $('#id_content').val('');
-        });
-
-        $('.cannot-rep').click(function(){
-            alert("登录后才能回复")
-        });
-
-        <!--点击提交评论，发送ajax-->
-        $('.comment-post').click(function(){
-            var has_id = $('.rep-to').attr('id');
-            if (has_id){
-                var rep_id = has_id
-            }
-            else{
-                var rep_id = 'base'
-            }
-            var has_parent = $('.rep-to').attr('data-par');
-            if (has_parent){
-                var parent_id = has_parent
-            }
-            else{
-                var parent_id = 'base'
-            }
-            var belong_id = {{ article.id }}
-            var content = $('#id_content').val();
-            if (content.length == 0){
-                alert("评论内容不能为空！");
-                return false;
-            }
-            $.ajaxSetup({
-                data: {csrfmiddlewaretoken:'{{ csrf_token }}'}
-                });
-            $.ajax({
-                type:'post',
-                url:"{% url 'comment:comment_view' article.id %}",
-                data:{'rep_id':rep_id,'content':content,'belong':belong_id,'parent_id':parent_id},
-                dataType:'json',
-                success:function(ret){
-                    alert(ret.msg)
-                    window.location.reload();
-                },
-                error:function(ret){
-                    alert(ret.msg);
-                }
-            });
-        });
-    });
-</script>
-
+<!--引入评论提交js函数-->
+{% include 'comment/ajax_block.html' %}
 <script>
 //锚点平滑移动到指定位置
 $('.toc a,#look-comments a').click(function () {

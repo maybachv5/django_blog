@@ -24,7 +24,7 @@
     <a href="{% url 'account_login' %}?next={{ request.path }}">登录</a>后参与评论
 </div>
 {% endif %}
-<div class="comment-count">
+<div class="comment-count" id="com-counter">
     <strong>{% get_comment_author_count article %}人参与&nbsp;|&nbsp;{{ article.comments }}条评论</strong>
 </div>
 {% get_comment_list article as comments %}

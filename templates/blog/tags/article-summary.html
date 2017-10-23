@@ -24,7 +24,7 @@
             </li>
             <li class="article-views"><i class="glyphicon glyphicon-eye-open"></i> {{ article.views }}</li>
             <li>
-                <a class="article-comments" href="#" title="查看文章评论">
+                <a class="article-comments" href="{{ article.get_absolute_url }}#next-post" title="查看文章评论">
                     <i class="glyphicon glyphicon-comment"></i> {{ article.comments }}</a>
             </li>
         </ul>
