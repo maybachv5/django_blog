@@ -5,5 +5,5 @@ from .models import Comment
 class CommentAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'create_date'
-    list_display = ('content','author','belong','create_date','parent','rep_to')
+    list_display = ('id','author','belong','create_date','parent','rep_to')
     list_filter = ('author','belong',)
