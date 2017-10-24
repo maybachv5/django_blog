@@ -26,7 +26,7 @@
                     <li class="views"> 阅读 {{ article.views }}</li>
                     <!--给评论的地方锚点，直接转到评论的地方去-->
                     <li id="look-comments">
-                        <a class="comments" href="#comment-form" title="查看评论">评论 {{ article.comments }}</a>
+                        <a class="comments" href="#comment-main-block" title="查看评论">评论 {{ article.comments }}</a>
                     </li>
                 </ul>
                 <div class="article-body">
@@ -71,7 +71,7 @@
                 </nav>
                 <!--切换文章部分结束-->
                 <!--标签云-->
-                <div class="tag-cloud">
+                <div class="tag-cloud" id="post-tags">
                     {% for tag in article.tags.all %}
                     <a class="label tags" id="tag-{{ forloop.counter }}" href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
                     {% endfor %}

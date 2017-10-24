@@ -12,6 +12,14 @@
             $('html,body').animate({scrollTop:$('#com-form').offset().top-90},100)
         });
 
+        <!--评论提交后将页面刷新，并且定位到新的评论处-->
+        if(sessionStorage.getItem('has_point')){
+            var top = $(sessionStorage.getItem('new_point')).offset().top-100;
+            $('body,html').animate({scrollTop:top}, 200);
+            window.location.hash = sessionStorage.getItem('new_point');
+            sessionStorage.removeItem('has_point');
+        };
+
         <!--点击取消回复的时候，删除回复的的信息-->
         $('#cancel-reply').click(function(){
             $('.rep-to').addClass('hidden').removeAttr("id").removeAttr("data-par");
@@ -55,7 +63,10 @@
                 data:{'rep_id':rep_id,'content':content,'belong':belong_id,'parent_id':parent_id},
                 dataType:'json',
                 success:function(ret){
-                    alert(ret.msg)
+                    <!--alert(ret.msg)-->
+                    $('#id_content').val('');
+                    sessionStorage.setItem('has_point',true);
+                    sessionStorage.setItem('new_point', ret.new_point);
                     window.location.reload();
                 },
                 error:function(ret){

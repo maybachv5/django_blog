@@ -28,5 +28,6 @@ def comment_view(request,pk):
             new_comment = Comment(author=new_user, content=new_content, belong=the_article, parent=new_parent, rep_to=new_rep_to)
         new_comment.save()
         the_article.update_comments()
-        return JsonResponse({'msg':'评论提交成功！'})
+        new_point = '#rep-' + str(new_comment.id)
+        return JsonResponse({'msg':'评论提交成功！','new_point':new_point})
     return JsonResponse({'msg': '评论失败！'})

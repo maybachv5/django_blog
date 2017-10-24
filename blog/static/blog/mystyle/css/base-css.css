@@ -262,12 +262,22 @@ a:hover {
     margin: 15px 0;
     border-bottom:1px solid #eee;
 }
+#post-tags {
+    width:100%;
+    margin:1.5em 0 0 0;
+    padding:1em 10px;
+    border: 1px dashed #088C6F;
+    border-radius:5px;
+}
 .article-body table th,
 .article-body table td {
     padding:2px 15px;
     border: 1px solid #95a5a6;
 }
 /*文章评论*/
+#comment-main-block {
+    margin:40px 0 10px 0;
+}
 .comment-count {
     margin:15px 0;
     font-size:1.2em;
