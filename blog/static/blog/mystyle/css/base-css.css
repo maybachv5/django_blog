@@ -218,7 +218,7 @@ a:hover {
     padding: 15px 2%;
     margin-bottom:20px;
 }
-.post-title h3 {
+.post-title h1 {
     color:#34495e;
     margin: 10px 0 20px 0;
     padding:10px 0 15px 0;
@@ -231,7 +231,20 @@ a:hover {
     word-wrap:break-word;
     display:block;
 }
-.article-body h3 {
+.article-body p {
+    margin-bottom:1em;
+}
+.article-body ul,
+.article-body ol {
+    padding-left:2.2em;
+}
+.codehilite pre {
+    border:none;
+    background-color: #e4eaef;
+    border-radius: 3px;
+    font-size:85%;
+}
+.article-body h2{
     font-size:20px;
     font-weight:600;
     margin: 5px 0;
@@ -240,10 +253,11 @@ a:hover {
     background-color: #f7f7f7;
     line-height: 40px;
 }
-.article-body h4 {
+.article-body h3 {
     font-weight:600;
     font-size:17px;
 }
+.com-body p img,
 .article-body img {
     display: block;
     max-width: 100%;
@@ -251,9 +265,11 @@ a:hover {
     margin-right: auto;
     margin-left:auto;
 }
+.com-body p a,
 .article-body a {
     color:#337ab7;
 }
+.com-body p a:hover,
 .article-body a:hover {
     color:#2ecc71;
     text-decoration: none;
@@ -546,10 +562,10 @@ footer .navbar a:hover {
         font-size:15px;
         line-height: 1.75;
     }
-    .article-body h3 {
+    .article-body h2 {
         font-size:21px;
     }
-    .article-body h4 {
+    .article-body h3 {
         font-weight:18px;
     }
     #toc-box {
@@ -574,10 +590,10 @@ footer .navbar a:hover {
         font-size:16px;
         line-height: 1.75;
     }
-    .article-body h3 {
+    .article-body h2 {
         font-size:23px;
     }
-    .article-body h4 {
+    .article-body h3 {
         font-weight:20px;
     }
     #toc-box {
