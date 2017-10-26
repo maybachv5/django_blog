@@ -72,7 +72,7 @@ class Article(models.Model):
     update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
     views = models.IntegerField('阅览量', default=0)
     comments = models.IntegerField('评论数', default=0)
-    slug = models.SlugField(unique=True,blank=True,null=True)
+    slug = models.SlugField(unique=True,default='')
 
     category = models.ForeignKey(Category, verbose_name='文章分类', blank=True, null=True, on_delete=models.SET_NULL)
     tags = models.ManyToManyField(Tag, verbose_name='标签')
@@ -86,7 +86,7 @@ class Article(models.Model):
         return self.title[:20]
 
     def get_absolute_url(self):
-        return reverse('blog:detail', kwargs={'article_id': self.id})
+        return reverse('blog:detail', kwargs={'slug': self.slug})
 
     def save(self,*args,**kwargs):
         self.slug = slugify(self.slug)

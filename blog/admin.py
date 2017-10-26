@@ -10,7 +10,7 @@ class ArticleAdmin(admin.ModelAdmin):
     exclude = ('views','comments')
 
     # 在查看修改的时候显示的属性，第一个字段带有<a>标签，所以最好放标题
-    list_display = ('title', 'author', 'create_date', 'status', 'category')
+    list_display = ('title', 'author', 'create_date', 'status', 'slug')
 
     # 激活过滤器，这个很有用
     list_filter = ('author', 'create_date', 'category', 'status')

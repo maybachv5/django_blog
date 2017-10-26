@@ -29,7 +29,7 @@ class TimelineView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Article
-    pk_url_kwarg = 'article_id'
+    slug_url_kwarg = 'slug'
     template_name = 'blog/detail.html'
     context_object_name = 'article'
 
