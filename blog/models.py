@@ -27,9 +27,9 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('blog:tag', kwargs={'slug': self.slug})
 
-    def save(self,*args,**kwargs):
-        self.slug = slugify(self.slug)
-        super(Tag,self).save()
+    # def save(self,*args,**kwargs):
+    #     self.slug = slugify(self.slug)
+    #     super(Tag,self).save()
 
 
 class Category(models.Model):
@@ -50,9 +50,9 @@ class Category(models.Model):
     def get_article_list(self):
         return Article.objects.filter(category=self, status='p')
 
-    def save(self,*args,**kwargs):
-        self.slug = slugify(self.slug)
-        super(Category,self).save()
+    # def save(self,*args,**kwargs):
+    #     self.slug = slugify(self.slug)
+    #     super(Category,self).save()
 
 
 class Article(models.Model):
