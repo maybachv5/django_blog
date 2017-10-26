@@ -108,10 +108,9 @@ class Article(models.Model):
     def get_next(self):
         return Article.objects.filter(id__gt=self.id,status='p').order_by('id').first()
 
-    def save(self,*args,**kwargs):
-        self.slug = slugify(self.slug)
-        super(Article,self).save()
-
+    # def save(self,*args,**kwargs):
+    #     self.slug = slugify(self.slug)
+    #     super(Article,self).save()
 
 class Timeline(models.Model):
     COLOR_CHOICE = (
