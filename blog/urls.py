@@ -6,9 +6,9 @@ from .views import IndexView,TimelineView,DetailView,CategoryView,TagView,MySear
 urlpatterns = [
     url(r'^$',IndexView.as_view(),name='index'),
     url(r'^timeline/$',TimelineView.as_view(),name='timeline'),
-    url(r'^article/(?P<slug>[-a-zA-Z0-9_]+)/$',DetailView.as_view(),name='detail'),
-    url(r'^category/(?P<slug>[-a-zA-Z0-9_]+)/$',CategoryView.as_view(),name='category'),
-    url(r'^tag/(?P<slug>[-a-zA-Z0-9_]+)/$',TagView.as_view(),name='tag'),
+    url(r'^article/(?P<slug>[\w-]+)/$',DetailView.as_view(),name='detail'),
+    url(r'^category/(?P<slug>[\w-]+)/$',CategoryView.as_view(),name='category'),
+    url(r'^tag/(?P<slug>[\w-]+)/$',TagView.as_view(),name='tag'),
     url(r'^search/?$', MySearchView.as_view(), name='search_view'),
     url(r'^about/$',Aboutview,name='about'),
 ]

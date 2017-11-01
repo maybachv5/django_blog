@@ -22,10 +22,11 @@ class Comment(models.Model):
         return self.content[:20]
 
     def content_to_markdown(self):
-        # 先转换成emoji然后转换成markdown
+        # 先转换成emoji然后转换成markdown,'escape':所有原始HTML将被转义并包含在文档中
         to_emoji_content = emoji.emojize(self.content, use_aliases=True)
-        return markdown.markdown(to_emoji_content, extensions=[
+        to_md = markdown.markdown(to_emoji_content, safe_mode='escape',extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
         ])
+        return to_md
 
