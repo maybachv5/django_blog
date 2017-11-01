@@ -3,12 +3,6 @@
 {% load blog_tags %}
 {% load humanize %}
 
-<style>
-.bozhu {
-color:red;
-padding:2px;
-}
-</style>
 <div id="comment-main-block">
     {% if user.is_authenticated %}
     <div class="comment-form" id="com-form">
@@ -47,8 +41,6 @@ padding:2px;
                 <div class="media-body">
                     <h5 class="media-heading">
                         <strong>{{ each.author.username }}</strong>
-                        {% if each.author.username == "Hopetree" %}- <small class="bozhu">博主</small>{% endif %}
-
                     </h5>
                     <p class="small">{{ forloop.counter }}楼&nbsp;-&nbsp;{{ each.create_date|naturaltime }}</p>
                 </div>
@@ -76,7 +68,6 @@ padding:2px;
                     <div class="media-body">
                         <h5 class="media-heading">
                             <strong>{{ each_child.author.username }}</strong>
-                            {% if each.author.username == "Hopetree" %}- <small class="bozhu">博主</small>{% endif %}
                             <i class="glyphicon glyphicon-share-alt"></i>
                             @{{ each_child.rep_to.author.username }}
                         </h5>
