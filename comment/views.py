@@ -13,7 +13,6 @@ def comment_view(request,pk):
     if request.is_ajax():
         data = request.POST
         new_user = request.user
-        print(data)
         new_content = data['content']
         article_id = data['belong']
         the_article = Article.objects.get(id=article_id)
@@ -27,7 +26,6 @@ def comment_view(request,pk):
             new_rep_to = Comment.objects.get(id=new_rep_id)
             new_comment = Comment(author=new_user, content=new_content, belong=the_article, parent=new_parent, rep_to=new_rep_to)
         new_comment.save()
-        the_article.update_comments()
         new_point = '#rep-' + str(new_comment.id)
         return JsonResponse({'msg':'评论提交成功！','new_point':new_point})
     return JsonResponse({'msg': '评论失败！'})

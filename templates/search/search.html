@@ -2,6 +2,7 @@
 {% load blog_tags %}
 {% load humanize %}
 {% load highlight %}
+{% load comment_tags %}
 
 {% block head_title %}文章搜索：{{ query }}{% endblock %}
 
@@ -62,7 +63,7 @@
                         <li>
                             <a class="article-comments" href="{{ article.object.get_absolute_url }}#comment-main-block"
                                title="查看文章评论">
-                                <i class="glyphicon glyphicon-comment"></i> {{ article.object.comments }}</a>
+                                <i class="glyphicon glyphicon-comment"></i> {% get_coms_count article.object %}</a>
                         </li>
                     </ul>
                 </div>

@@ -1,5 +1,6 @@
 {% load blog_tags %}
 {% load humanize %}
+{% load comment_tags %}
 <div class="media article-item">
     <div class="media-left media-middle hidden-xs">
         <a href="{{ article.get_absolute_url }}" target="_blank">
@@ -25,7 +26,7 @@
             <li class="article-views"><i class="glyphicon glyphicon-eye-open"></i> {{ article.views }}</li>
             <li>
                 <a class="article-comments" href="{{ article.get_absolute_url }}#comment-main-block" title="查看文章评论">
-                    <i class="glyphicon glyphicon-comment"></i> {{ article.comments }}</a>
+                    <i class="glyphicon glyphicon-comment"></i> {% get_coms_count article %}</a>
             </li>
         </ul>
     </div>

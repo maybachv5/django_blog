@@ -28,7 +28,7 @@
     </div>
     {% endif %}
     <div class="comment-count" id="com-counter">
-        <strong>{% get_comment_author_count article %}人参与&nbsp;|&nbsp;{{ article.comments }}条评论</strong>
+        <strong>{% get_comment_author_count article %}人参与&nbsp;|&nbsp;{% get_coms_count article %}条评论</strong>
     </div>
     {% get_comment_list article as comments %}
     <div class="comment-list">

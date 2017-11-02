@@ -71,7 +71,6 @@ class Article(models.Model):
     create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
     update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
     views = models.IntegerField('阅览量', default=0)
-    comments = models.IntegerField('评论数', default=0)
     slug = models.SlugField(unique=True)
 
     category = models.ForeignKey(Category, verbose_name='文章分类', blank=True, null=True, on_delete=models.SET_NULL)
@@ -97,10 +96,6 @@ class Article(models.Model):
     def update_views(self):
         self.views += 1
         self.save(update_fields=['views'])
-
-    def update_comments(self):
-        self.comments += 1
-        self.save(update_fields=['comments'])
 
     def get_pre(self):
         return Article.objects.filter(id__lt=self.id,status='p').order_by('-id').first()

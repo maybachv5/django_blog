@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% load blog_tags %}
+{% load comment_tags %}
 
 {% block head_title %}{{ article.title }}{% endblock %}
 
@@ -26,7 +27,7 @@
                     <li class="views"> 阅读 {{ article.views }}</li>
                     <!--给评论的地方锚点，直接转到评论的地方去-->
                     <li id="look-comments">
-                        <a class="comments" href="#comment-main-block" title="查看评论">评论 {{ article.comments }}</a>
+                        <a class="comments" href="#comment-main-block" title="查看评论">评论 {% get_coms_count article %}</a>
                     </li>
                 </ul>
                 <div class="article-body">
