@@ -81,3 +81,11 @@ def load_article_summary(article):
 def load_pages(context):
     '''分页标签模板，不需要传递参数，直接继承参数'''
     return context
+
+@register.simple_tag
+def my_highlight(text,q):
+    try:
+        r = text.replace(q,'<span class="highlighted">{}</span>'.format(q))
+        return mark_safe(r)
+    except:
+        return text

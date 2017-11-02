@@ -37,7 +37,7 @@
                 <div class="media-body">
                     <a class="article-title" title="{{ article.object.title }}"
                        href="{{ article.object.get_absolute_url }}">
-                        <h4 class="media-heading"><strong>{% highlight article.object.title with query %}</strong></h4>
+                        <h4 class="media-heading"><strong>{% my_highlight article.object.title query %}</strong></h4>
                     </a>
                     <ul class="list-inline small article-infos info-top">
                         <li class="article-author"><i class="glyphicon glyphicon-user"></i> {{ article.object.author }}
