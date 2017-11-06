@@ -7,7 +7,7 @@ class ArticleAdmin(admin.ModelAdmin):
     # 这个的作用是给出一个筛选机制，一般按照时间比较好
     date_hierarchy = 'create_date'
 
-    exclude = ('views','comments')
+    exclude = ('views')
 
     # 在查看修改的时候显示的属性，第一个字段带有<a>标签，所以最好放标题
     list_display = ('title', 'author', 'create_date', 'status', 'slug')
