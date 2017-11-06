@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
-from django_blog.settings import *
+from .settings import *
 DEBUG = True

@@ -29,22 +29,15 @@ def get_show_name(user):
 def get_tag_list():
     '''返回标签列表,不能使用annotate方法，因为这种方法不能过滤掉草稿文章'''
     # return Tag.objects.annotate(total_num=Count('article')).filter(total_num__gt=0)
-    tag_list = []
     lis = Tag.objects.all()
-    for each in lis:
-        if each.get_article_list().count() > 0:
-            tag_list.append(each)
-    return tag_list
+    return [each for each in lis if each.get_article_list().count() > 0]
 
 
 @register.simple_tag
 def get_category_list():
     '''返回文章分类列表'''
-    cate_list = []
-    for each in Category.objects.all():
-        if each.get_article_list().count() > 0:
-            cate_list.append(each)
-    return cate_list
+    lis = Category.objects.all()
+    return [each for each in lis if each.get_article_list().count() > 0]
 
 
 @register.simple_tag
@@ -84,6 +77,7 @@ def load_pages(context):
 
 @register.simple_tag
 def my_highlight(text,q):
+    '''自定义标题搜索词高亮函数'''
     try:
         r = text.replace(q,'<span class="highlighted">{}</span>'.format(q))
         return mark_safe(r)
