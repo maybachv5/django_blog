@@ -291,6 +291,10 @@ a:hover {
     border: 1px solid #95a5a6;
 }
 /*文章评论*/
+#site-user {
+    font-size:0.8em;
+    color:red;
+}
 #comment-main-block {
     margin:40px 0 10px 0;
 }
@@ -313,6 +317,11 @@ a:hover {
 .comment-list #com-avatar img {
     width: 45px;
     height: 45px;
+    border-radius: 50%;
+}
+.child-comments #com-avatar img {
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
 }
 .parent-comments {

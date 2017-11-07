@@ -28,7 +28,7 @@
     </div>
     {% endif %}
     <div class="comment-count" id="com-counter">
-        <strong>{% get_comment_author_count article %}人参与&nbsp;|&nbsp;{% get_coms_count article %}条评论</strong>
+        <strong>{% get_comment_author_count article %}&nbsp;人参与&nbsp;|&nbsp;{% get_coms_count article %}&nbsp;条评论</strong>
     </div>
     {% get_comment_list article as comments %}
     <div class="comment-list">
@@ -39,22 +39,24 @@
                     {% get_show_avatar each.author %}
                 </div>
                 <div class="media-body">
+                    <div class="pull-right">
+                        {% if user.is_authenticated %}
+                        <button class="btn btn-default btn-xs btn-reply" id="rep-{{ each.id }}"
+                                data-parent="{{ each.id }}"
+                                data-name="{{ each.author }}">回复
+                        </button>
+                        {% else %}
+                        <button class="btn btn-default btn-xs cannot-rep" title="请先登录！">回复</button>
+                        {% endif %}
+                    </div>
                     <h5 class="media-heading">
                         <strong>{{ each.author.username }}</strong>
+                        {% if each.author.username == 'Hopetree' %}<span id="site-user">[博主]</span>{% endif %}
                     </h5>
                     <p class="small">{{ forloop.counter }}楼&nbsp;-&nbsp;{{ each.create_date|naturaltime }}</p>
                 </div>
             </div>
             <div class="com-body">{{ each.content_to_markdown|safe }}</div>
-            <div>
-                {% if user.is_authenticated %}
-                <button class="btn btn-default btn-xs btn-reply" id="rep-{{ each.id }}" data-parent="{{ each.id }}"
-                        data-name="{{ each.author }}">回复
-                </button>
-                {% else %}
-                <button class="btn btn-default btn-xs cannot-rep" title="请先登录！">回复</button>
-                {% endif %}
-            </div>
         </div>
         {% get_child_comments each as childs %}
         {% if childs %}
@@ -66,8 +68,20 @@
                         {% get_show_avatar each_child.author %}
                     </div>
                     <div class="media-body">
+                        <div class="pull-right">
+                            {% if user.is_authenticated %}
+                            <button class="btn btn-default btn-xs btn-reply" id="rep-{{ each_child.id }}"
+                                    data-parent="{{ each.id }}"
+                                    data-name="{{ each_child.author }}">
+                                回复
+                            </button>
+                            {% else %}
+                            <button class="btn btn-default btn-xs cannot-rep" title="请先登录！">回复</button>
+                            {% endif %}
+                        </div>
                         <h5 class="media-heading">
                             <strong>{{ each_child.author.username }}</strong>
+                            {% if each_child.author.username == 'Hopetree' %}<span id="site-user">[博主]</span>{% endif %}
                             <i class="glyphicon glyphicon-share-alt"></i>
                             @{{ each_child.rep_to.author.username }}
                         </h5>
@@ -76,21 +90,14 @@
                 </div>
                 <div class="com-body">{{ each_child.content_to_markdown|safe }}</div>
                 <!--<p>我的父亲是：{{ each_child.parent }}</p>-->
-                <div>
-                    {% if user.is_authenticated %}
-                    <button class="btn btn-default btn-xs btn-reply" id="rep-{{ each_child.id }}"
-                            data-parent="{{ each.id }}"
-                            data-name="{{ each_child.author }}">
-                        回复
-                    </button>
-                    {% else %}
-                    <button class="btn btn-default btn-xs cannot-rep" title="请先登录！">回复</button>
-                    {% endif %}
-                </div>
             </div>
             {% endfor %}
             {% endif %}
         </ul>
+        {% empty %}
+        <div class="empty-com">
+            <p>暂时没有评论，欢迎来尬聊！</p>
+        </div>
         {% endfor %}
     </div>
 </div>
