@@ -152,3 +152,17 @@ class Timeline(models.Model):
             'markdown.extensions.extra',
         ])
 
+class Carousel(models.Model):
+    number = models.IntegerField('编号',max_length=1,help_text='编号决定图片播放的顺序')
+    title = models.CharField('标题',max_length=20,blank=True,null=True,help_text='标题可以为空')
+    content = models.CharField('描述',max_length=80)
+    img_url = models.CharField('图片地址',max_length=200)
+    url = models.CharField('跳转链接',max_length=200,blank=True,null=True,help_text='图片跳转的超链接，不填写则不跳转')
+
+    class Meta:
+        verbose_name = '图片轮播'
+        verbose_name_plural = verbose_name
+        ordering = ['number','id']
+
+    def __str__(self):
+        return self.title
