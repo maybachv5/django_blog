@@ -22,7 +22,9 @@
         {% else %}
         <div class="item">
         {% endif %}
-            <img src="{{ each.img_url }}" alt="轮播图{{ forloop.counter0 }}">
+            <a href="{{ each.url }}">
+                <img src="{{ each.img_url }}" alt="轮播图{{ forloop.counter0 }}">
+            </a>
             <div class="carousel-caption">
                 {% if each.title %}
                 <h3>{{ each.title }}</h3>
