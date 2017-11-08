@@ -1,34 +1,36 @@
-{% load static %}
+{% load static blog_tags %}
 <!--这个效果的图片不会压缩，而是等比例缩放，当宽度不够的时候就补充空白，所以最好把图片先裁剪好-->
 <!--图片大小可以不统一，但是比例需要统一，推荐比例16:9-->
+{% get_carousel_list as carousels %}
 <div id="my-carousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#my-carousel" data-slide-to="1"></li>
-        <li data-target="#my-carousel" data-slide-to="2"></li>
+        {% for each in carousels %}
+        {% if forloop.counter0 == 0 %}
+        <li data-target="#my-carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+        {% else %}
+        <li data-target="#my-carousel" data-slide-to="{{ forloop.counter0 }}"></li>
+        {% endif %}
+        {% endfor %}
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
+        {% for each in carousels %}
+        {% if forloop.counter0 == 0 %}
         <div class="item active">
-            <img src="http://cdn.stopfollow.com/move_img02.jpg" alt="pic01">
-            <div class="carousel-caption">
-                <p>人间四月芳菲尽，山寺桃花始盛开。</p>
-            </div>
-        </div>
+        {% else %}
         <div class="item">
-            <img src="http://cdn.stopfollow.com/move_img01.jpg" alt="pic02">
+        {% endif %}
+            <img src="{{ each.img_url }}" alt="轮播图{{ forloop.counter0 }}">
             <div class="carousel-caption">
-                <p>竹外桃花三两枝， 春江水暖鸭先知。</p>
+                {% if each.title %}
+                <h3>{{ each.title }}</h3>
+                {% endif %}
+                <p>{{ each.content }}</p>
             </div>
         </div>
-        <div class="item">
-            <img src="http://cdn.stopfollow.com/move_img03.jpg" alt="pic03">
-            <div class="carousel-caption">
-                <p>停车坐爱枫林晚,霜叶红于二月花。</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <!-- Controls -->

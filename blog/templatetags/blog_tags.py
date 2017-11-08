@@ -2,11 +2,17 @@
 # 修改了自定义标签要重启服务器
 
 from django import template
-from ..models import Article, Category, Tag, Timeline
+from ..models import Article, Category, Tag, Timeline, Carousel
 from django.db.models.aggregates import Count
 from django.utils.html import mark_safe
 
 register = template.Library()
+
+@register.simple_tag
+def get_carousel_list():
+    '''获取轮播图片列表'''
+    return Carousel.objects.all()
+
 
 
 @register.filter
