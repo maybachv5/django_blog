@@ -35,7 +35,7 @@
         {% for each in comments %}
         <div class="parent-comments">
             <div class="media">
-                <div class="media-left media-middle" id="com-avatar">
+                <div class="media-left" id="com-avatar">
                     {% get_show_avatar each.author %}
                 </div>
                 <div class="media-body">
@@ -64,7 +64,7 @@
             {% for each_child in childs %}
             <div class="child-comments">
                 <div class="media">
-                    <div class="media-left media-middle" id="com-avatar">
+                    <div class="media-left" id="com-avatar">
                         {% get_show_avatar each_child.author %}
                     </div>
                     <div class="media-body">

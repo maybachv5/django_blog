@@ -310,16 +310,18 @@ a:hover {
 }
 .rep-to {
     margin:0.3em 0;
+    color: #31708f;
 }
 .comment-list .media {
     margin:10px 0;
 }
 .comment-list #com-avatar img {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 .child-comments #com-avatar img {
+    margin-top:2px;
     width: 35px;
     height: 35px;
     border-radius: 50%;
