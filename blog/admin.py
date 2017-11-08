@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Tag, Category, Timeline
+from .models import Article, Tag, Category, Timeline, Carousel
 
 
 @admin.register(Article)
@@ -57,3 +57,7 @@ class TimelineAdmin(admin.ModelAdmin):
     )
     date_hierarchy = 'update_date'
     list_filter = ('star_num', 'update_date')
+
+@admin.register(Carousel)
+class CarouselAdmin(admin.ModelAdmin):
+    list_display = ('number','title','content','img_url','url')
