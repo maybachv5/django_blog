@@ -40,10 +40,10 @@
                         <h4 class="media-heading"><strong>{% my_highlight article.object.title query %}</strong></h4>
                     </a>
                     <ul class="list-inline small article-infos info-top">
-                        <li class="article-author"><i class="glyphicon glyphicon-user"></i> {{ article.object.author }}
+                        <li class="article-author"><i class="fa fa-user-circle"></i> {{ article.object.author }}
                         </li>
                         <li class="article-create-date">
-                            <i class="glyphicon glyphicon-time"></i> {{ article.object.create_date|naturaltime}}
+                            <i class="fa fa-calendar-times-o"></i> {{ article.object.create_date|naturaltime}}
                         </li>
                     </ul>
                     <p>
@@ -56,14 +56,14 @@
                         <li>
                             <a class="article-category" href="{{ article.object.category.get_absolute_url }}"
                                title="查看当前分类下更多文章">
-                                <i class="glyphicon glyphicon-th-list"></i> {{ article.object.category }}</a>
+                                <i class="fa fa-th-list"></i> {{ article.object.category }}</a>
                         </li>
-                        <li class="article-views"><i class="glyphicon glyphicon-eye-open"></i> {{ article.object.views }}
+                        <li class="article-views"><i class="fa fa-eye"></i> {{ article.object.views }}
                         </li>
                         <li>
                             <a class="article-comments" href="{{ article.object.get_absolute_url }}#comment-main-block"
                                title="查看文章评论">
-                                <i class="glyphicon glyphicon-comment"></i> {% get_coms_count article.object %}</a>
+                                <i class="fa fa-commenting"></i> {% get_coms_count article.object %}</a>
                         </li>
                     </ul>
                 </div>

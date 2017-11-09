@@ -49,7 +49,7 @@ def get_category_list():
 @register.simple_tag
 def get_star(num):
     '''得到一排星星'''
-    tag_i = '<i class="glyphicon glyphicon-star"></i>'
+    tag_i = '<i class="fa fa-star"></i>'
     return mark_safe(tag_i * num)
 
 
