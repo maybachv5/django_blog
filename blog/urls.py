@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
 from .views import IndexView,TimelineView,DetailView,CategoryView,TagView,MySearchView,Aboutview
+from .views import findjob
 
 
 urlpatterns = [
@@ -11,4 +12,6 @@ urlpatterns = [
     url(r'^tag/(?P<slug>[\w-]+)/$',TagView.as_view(),name='tag'),
     url(r'^search/?$', MySearchView.as_view(), name='search_view'),
     url(r'^about/$',Aboutview,name='about'),
+
+    url(r'^sometest/?$',findjob,name='sometest'),
 ]
