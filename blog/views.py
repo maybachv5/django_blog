@@ -101,6 +101,4 @@ class MySearchView(SearchView):
         # 这个过滤有问题，并没有把status='d'的过滤掉，这是个bug目前不得解
         return queryset.filter(status='p')
 
-def findjob(request):
-    return render(request,'blog/findjob.html')
 
