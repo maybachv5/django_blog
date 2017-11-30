@@ -1,5 +1,5 @@
 {% load static %}
-{% load blog_tags %}
+{% load blog_tags comment_tags %}
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,7 +54,12 @@
                     </a>
                     <ul class="dropdown-menu" id="is_log">
                         <li><a href="{% url 'oauth:profile' %}"><i class="glyphicon glyphicon-user"></i>个人中心</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>消息</a></li>
+                        <li><a href="{% url 'comment:notifications' 'all' %}"><i class="glyphicon glyphicon-envelope"></i>消息
+                            {% get_note_count user 'read' as note_num %}
+                            {% if note_num %}
+                            <span class="badge">{% get_note_count user 'read' %}</span></a>
+                            {% endif %}
+                        </li>
                         <li><a href="{% url 'account_logout' %}"><i class="glyphicon glyphicon-log-out"></i>退出</a></li>
                     </ul>
                 </li>

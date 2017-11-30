@@ -1,0 +1,82 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load comment_tags %}
+
+{% block head_title %}消息提示{% endblock %}
+
+{% block css-file %}
+<link href="{% static 'blog/mystyle/css/notification.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            {% get_notifications user read as notifications %}
+            <ul class="cbp_tmtimeline">
+                {% for each in notifications %}
+                <li>
+                    <time class="cbp_tmtime" datetime="{{ each.create_date }}">
+                        <span>{{ each.create_date|date:"Y/m/d"}}</span>
+                        <span>{{ each.create_date|date:"H:i"}}</span>
+                    </time>
+                    <div class="cbp_tmicon glyphicon glyphicon-envelope"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>
+                            <strong>{{ each.create_p }}</strong>&nbsp;在&nbsp;
+                            <a href="{{ each.to_article.get_absolute_url }}#rep-{{ each.to_comment.id }}">
+                                {{each.to_article.title }}</a>&nbsp;中@了你
+                        </h2>
+                        <p>{{ each.to_comment.content|truncatechars:130 }}</p>
+                        {% if not each.is_read %}
+                        <div class="to_read">
+                            <a class="btn btn-success pull-right"
+                               href="{% url 'comment:note_to_read' read=read id=each.id %}">标记为已读</a>
+                        </div>
+                        {% else %}
+                        <div class="to_delete">
+                            <a class="btn btn-danger pull-right"
+                               href="{% url 'comment:note_to_delete' read=read id=each.id %}">删除</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </li>
+                {% empty %}
+                <li>
+                    <time class="cbp_tmtime" datetime="{{ now_date }}">
+                        <span>{{ now_date|date:"Y/m/d"}}</span>
+                        <span>{{ now_date|date:"H:i"}}</span>
+                    </time>
+                    <div class="cbp_tmicon glyphicon glyphicon-envelope"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>你暂时没有任何推送消息！</h2>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-info" id="notes-main">
+                <div class="panel-heading">
+                    <h4><strong><i class="fa   fa-bell-o"></i>&nbsp;提示信息</strong></h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <a class="list-group-item {% if request.path == '/comments/notifications/all/' %}active{% endif %}"
+                           href="{% url 'comment:notifications' 'all' %}">全部信息
+                            <span class="badge">{% get_note_count user 'all' %}</span>
+                        </a>
+                        <a class="list-group-item {% if request.path == '/comments/notifications/read/' %}active{% endif %}"
+                           href="{% url 'comment:notifications' 'read' %}">未读信息
+                            <span class="badge">{% get_note_count user 'read' %}</span>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

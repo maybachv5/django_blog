@@ -78,7 +78,12 @@ a:hover {
     margin-right:1em;
     color:#34495e;
 }
+.navbar-inverse .badge {
+    background-color: #3594cb;
+    font-weight: 400;
+}
 /*导航显示头像*/
+
 .dropdown > #user-avatar {
     padding:5px 15px;
 }

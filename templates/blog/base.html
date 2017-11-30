@@ -1,4 +1,5 @@
 {% load static %}
+{% load comment_tags %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -65,6 +66,7 @@
     var headroom  = new Headroom(myElement);
     headroom.init();
 
+
 </script>
 <!--百度推送-->
 <script>
@@ -80,6 +82,30 @@
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 })();
+
+</script>
+<script type="text/javascript">
+//新消息标题提示
+_record = 0;
+var myTitle = document.title;
+var msgs = {% get_note_count user 'read' %};
+if (msgs>0){
+function titleBlink(){
+  _record++;
+  if(_record==3){//当变量_record累加到3是，将其赋值为1。相当于无限循环。
+    _record=1;
+  }
+  if(_record==1){
+    document.title='【  】'+myTitle;
+  }
+  if(_record==2){
+    document.title='【新消息】'+myTitle;
+  }
+  setTimeout("titleBlink()",500);//调节时间，单位毫秒。
+};
+}
+
+titleBlink();
 </script>
 <!--my js files-->
 <script src="{% static 'blog/mystyle/js/base-js.js'%}"></script>

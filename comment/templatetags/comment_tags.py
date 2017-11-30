@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import template
-from ..models import Comment
+from ..models import Comment,Notification
 
 
 register = template.Library()
@@ -32,3 +32,21 @@ def get_comment_author_count(article):
         if comment.author not in lis:
             lis.append(comment.author)
     return len(lis)
+
+@register.simple_tag
+def get_notifications(user,read):
+    '''返回一个人的提示消息列表'''
+    if read == 'read':
+        return Notification.objects.filter(get_p=user,is_read=False)
+    else:
+        return Notification.objects.filter(get_p=user)
+
+@register.simple_tag
+def get_note_count(user,read):
+    '''返回一个信息提示总数'''
+    if read == 'read':
+        notes = Notification.objects.filter(get_p=user,is_read=False)
+    else:
+        notes = Notification.objects.filter(get_p=user)
+    return notes.count()
+

@@ -30,3 +30,18 @@ class Comment(models.Model):
         ])
         return to_md
 
+class Notification(models.Model):
+    create_p = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='提示创建者',related_name='create_p')
+    get_p = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='提示接收者',related_name='get_p')
+    to_article = models.ForeignKey(Article,verbose_name='所属文章',related_name='the_notify',default='')
+    to_comment = models.ForeignKey(Comment,verbose_name='所属评论',related_name='the_comment',default='')
+    create_date = models.DateTimeField('提示时间',auto_now_add=True)
+    is_read = models.BooleanField('是否已读',default=False)
+
+    class Meta:
+        verbose_name = '提示信息'
+        verbose_name_plural = verbose_name
+        ordering = ['-create_date']
+
+    def __str__(self):
+        return '{}@了{}'.format(self.create_p,self.get_p)
