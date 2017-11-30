@@ -84,6 +84,7 @@
 })();
 
 </script>
+{% if user.is_authenticated %}
 <script type="text/javascript">
 //新消息标题提示
 _record = 0;
@@ -104,9 +105,9 @@ function titleBlink(){
   setTimeout("titleBlink()",500);//调节时间，单位毫秒。
 };
 }
-
 titleBlink();
 </script>
+{% endif %}
 <!--my js files-->
 <script src="{% static 'blog/mystyle/js/base-js.js'%}"></script>
 {% block js-file %}
