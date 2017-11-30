@@ -10,18 +10,23 @@ def notify_handler(sender,instance,**kwargs):
         if the_article.author == instance.rep_to.author:
             get_p = instance.rep_to.author
             new_notify = Notification(create_p=create_p,get_p=get_p,to_article=the_article,to_comment=instance)
-            new_notify.save()
+            if create_p != get_p:
+                new_notify.save()
         else:
             get_p1 = the_article.author
             get_p2 = instance.rep_to.author
             new1 = Notification(create_p=create_p,get_p=get_p1,to_article=the_article,to_comment=instance)
             new2 = Notification(create_p=create_p,get_p=get_p2,to_article=the_article,to_comment=instance)
-            new1.save()
-            new2.save()
+            if create_p != get_p1:
+                new1.save()
+            if create_p != get_p2:
+                new2.save()
     else:
-        '''如果评论是一个一级评论而不是回复其他评论，则直接通知给文章作者'''
+        '''如果评论是一个一级评论而不是回复其他评论并且不是作者自评，则直接通知给文章作者'''
         get_p = the_article.author
         new_notify = Notification(create_p=create_p,get_p=get_p,to_article=the_article,to_comment=instance)
-        new_notify.save()
+        if create_p != get_p:
+            new_notify.save()
+
 
 post_save.connect(notify_handler,sender=Comment)
