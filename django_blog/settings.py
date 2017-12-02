@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'blog',  # 博客应用
     'comment',  # 评论应用
 
+    'tools', # 工具应用
+
 ]
 
 # allauth配置

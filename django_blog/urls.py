@@ -37,5 +37,6 @@ urlpatterns = [
                   url(r'^comments/', include('comment.urls', namespace='comment')),  # comment
                   url(r'^blog/rss/$', AllArticleRssFeed(), name='rss'),
                   url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+                  url(r'^tools/',include('tools.urls',namespace='tools')), # tools
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 加入这个才能显示media文件
