@@ -18,10 +18,7 @@ def wordsearch_api(request):
     tm_results = tm.get_result()
     jd = JD_WordSearch(word)
     jd_results = jd.get_results()
-    vip = VIP_WordSearch(word)
-    vip_results = vip.get_results()
     return JsonResponse({'tb_results':tb_results,
                          'tm_results':tm_results,
                          'jd_results':jd_results,
-                         'vip_results':vip_results,
                          })

@@ -105,50 +105,6 @@ class JD_WordSearch(object):
             results = None
         return results
 
-class VIP_WordSearch(object):
-    '''唯品会搜索'''
-    def __init__(self,word):
-        self.word = word
-        self.baseurl = 'https://category.vip.com/ajax/getSuggest.php'
-        self.headers = {
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0',
-            'Host':'category.vip.com',
-            'Referer':'https://category.vip.com/',
-        }
-
-    def get_results(self):
-        t = time.time()
-        info = {
-            'callback':'searchSuggestions',
-            'warehouse':'VIP_NH',
-            'keyword':self.word,
-            '_':str(int(t*1000)),
-        }
-        html = requests.get(self.baseurl, params=info, headers=self.headers).text
-        data = re.findall('search.*?\(({.*})\)',html)
-        if data:
-            data = data[0]
-        else:
-            data = None
-        try:
-            data = json.loads(data)
-            results = data.get('data')
-            last_results = []
-            for each in results:
-                product = {}
-                product['word'] = each.get('word')
-                product['goodscount'] = each.get('goodsCount')
-                wordlist = each.get('props')
-                if wordlist:
-                    words = '，'.join([w.get('name') for w in wordlist])
-                    product['words'] = words
-                else:
-                    product['words'] = ''
-                last_results.append(product)
-        except:
-            last_results = None
-        return last_results
-
 if __name__ == '__main__':
     word = '机械键盘'
     tb = TB_WordSearch(word)
@@ -169,8 +125,4 @@ if __name__ == '__main__':
     for m in jj:
         print(m)
 
-    vip = VIP_WordSearch(word)
-    print('唯品会结果：')
-    vv = vip.get_results()
-    for v in vv:
-        print(v)
+
