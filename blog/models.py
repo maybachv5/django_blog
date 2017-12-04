@@ -8,6 +8,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 
+# 文章标签
 class Tag(models.Model):
     name = models.CharField('文章标签', max_length=15)
     slug = models.SlugField(unique=True)
@@ -31,7 +32,7 @@ class Tag(models.Model):
     #     self.slug = slugify(self.slug)
     #     super(Tag,self).save()
 
-
+# 文章分类
 class Category(models.Model):
     name = models.CharField('文章分类', max_length=15)
     slug = models.SlugField(unique=True)
@@ -54,7 +55,7 @@ class Category(models.Model):
     #     self.slug = slugify(self.slug)
     #     super(Category,self).save()
 
-
+# 文章
 class Article(models.Model):
     IMG_LINK = settings.DEFAULT_IMG_LINL
 
@@ -107,6 +108,7 @@ class Article(models.Model):
     #     self.slug = slugify(self.slug)
     #     super(Article,self).save()
 
+# 时间线
 class Timeline(models.Model):
     COLOR_CHOICE = (
         ('primary', '基本-蓝色'),
@@ -152,6 +154,7 @@ class Timeline(models.Model):
             'markdown.extensions.extra',
         ])
 
+# 幻灯片
 class Carousel(models.Model):
     number = models.IntegerField('编号',help_text='编号决定图片播放的顺序')
     title = models.CharField('标题',max_length=20,blank=True,null=True,help_text='标题可以为空')
@@ -166,3 +169,18 @@ class Carousel(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# 死链
+class Silian(models.Model):
+    badurl = models.CharField('死链地址',max_length=200,help_text='地址必须带http')
+    remark = models.CharField('死链说明',max_length=50,blank=True,null=True)
+    add_date = models.DateTimeField('提交日期',auto_now_add=True)
+
+    class Meta:
+        verbose_name = '死链'
+        verbose_name_plural = verbose_name
+        ordering = ['-add_date']
+
+    def __str__(self):
+        return self.badurl

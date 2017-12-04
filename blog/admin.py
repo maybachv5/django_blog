@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Tag, Category, Timeline, Carousel
+from .models import Article, Tag, Category, Timeline, Carousel, Silian
 
 
 @admin.register(Article)
@@ -61,3 +61,7 @@ class TimelineAdmin(admin.ModelAdmin):
 @admin.register(Carousel)
 class CarouselAdmin(admin.ModelAdmin):
     list_display = ('number','title','content','img_url','url')
+
+@admin.register(Silian)
+class SilianAdmin(admin.ModelAdmin):
+    list_display = ('id','remark','badurl','add_date')

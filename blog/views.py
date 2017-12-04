@@ -1,4 +1,4 @@
-from .models import Article, Tag, Category, Timeline
+from .models import Article, Tag, Category, Timeline, Silian
 from django.views import generic
 # Create your views here.
 import markdown
@@ -101,4 +101,8 @@ class MySearchView(SearchView):
         # 这个过滤有问题，并没有把status='d'的过滤掉，这是个bug目前不得解
         return queryset.filter(status='p')
 
+class SilianView(generic.ListView):
+    model = Silian
+    template_name = 'silian.xml'
+    context_object_name = 'badurls'
 
