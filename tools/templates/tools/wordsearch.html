@@ -23,11 +23,12 @@
             <div class="panel panel-info">
                 <div class="panel-heading"><i class="fa fa-book"></i> 工具介绍</div>
                 <div class="panel-body">
-                    <p>这个工具实现一个简单的搜索结果数据反馈功能，引用的是淘宝和天猫的搜索 API，实际上是一个爬虫。返回的结果就是用户在使用淘宝和天猫搜索功能的时候出现的提示词以及每个词包含的宝贝总数。</p>
-                    <p>这个工具只有登录用户才能使用！</p>
-                    <p>工具工作原理和代码介绍可以查看文章：
-                        <a href="http://www.stopfollow.com/article/taobao-title-word-search-for-choose-words/" id="article-tool">淘宝标题关键词搜索，使用爬虫实现精确选词</a>
+                    <p>这个工具实现一个简单的搜索结果数据反馈功能，引用的是淘宝和天猫的搜索 API，实际上是一个爬虫。返回的结果就是用户在使用淘宝、天猫搜索功能的时候出现的提示词以及每个词包含的宝贝总数。</p>
+                    <p>这个工具只有已经登录本博客的用户才能使用！</p>
+                    <p>工具工作原理和代码介绍可以查看文章（新添加京东搜索结果反馈）：
+                        <a href="http://www.stopfollow.com/article/taobao-title-word-search-for-choose-words/" id="article-tool">淘宝京东标题关键词搜索，使用爬虫实现精确选词</a>
                     </p>
+                    <p>发现搜索数据和实际数据有偏差或者疑问以及任何建议和意见都可以前往上面链接的文章中评论反馈！</p>
                 </div>
             </div>
             <div class="input-group">
@@ -36,7 +37,7 @@
                     {% if user.is_authenticated %}
                     <button class="btn btn-info" id="tb-go" type="button">搜索</button>
                     {% else %}
-                    <button class="btn btn-warning" disabled="disabled" type="button" title="请登录后使用">搜索</button>
+                    <button class="btn btn-warning" disabled="disabled" type="button" title="请登录后使用">请登录后搜索</button>
                     {% endif %}
                 </span>
             </div><!-- /input-group -->
@@ -64,6 +65,17 @@
                     </tr>
                     </thead>
                     <tbody id="tm-results"></tbody>
+                </table>
+                <h2>京东搜索结果：</h2>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>相关长尾词</th>
+                        <th>宝贝数量</th>
+                    </tr>
+                    </thead>
+                    <tbody id="jd-results"></tbody>
                 </table>
             </div>
         </div>

@@ -3,8 +3,10 @@ import requests
 import re
 import json
 import time
+import random
 
 class TB_WordSearch(object):
+    '''淘宝搜索'''
     def __init__(self,word):
         self.word = word
         self.base_url = 'https://suggest.taobao.com/sug'
@@ -28,6 +30,7 @@ class TB_WordSearch(object):
         return results
 
 class TM_WordSearch(object):
+    '''天猫搜索'''
     def __init__(self,word):
         self.word = word
         self.baseurl = 'https://suggest.taobao.com/sug'
@@ -56,6 +59,34 @@ class TM_WordSearch(object):
         results = data.get('result')
         return results
 
+class JD_WordSearch(object):
+    '''京东搜索'''
+    def __init__(self,word):
+        self.word = word
+        self.baseurl = 'https://dd-search.jd.com/'
+        self.headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/57.0.2987.110 Safari/537.36',
+            'Host':'dd-search.jd.com',
+            'Referer':'https://www.jd.com/',
+        }
+
+    def get_results(self):
+        t = time.time()
+        info = {
+            'terminal':'pc',
+            'ver':'2',
+            'zip':'1',
+            'key':self.word,
+            't':str(int(t*1000)),
+            'curr_url':'search.jd.com/Search',
+            'callback':'jQuery'+str(random.randint(3432434,5444229)),
+        }
+        html = requests.get(self.baseurl,params=info,headers=self.headers).text
+        data = re.findall('({"key".*?})',html)
+        results = [json.loads(each) for each in data]
+        return results
+
 if __name__ == '__main__':
     word = '键盘'
     tb = TB_WordSearch(word)
@@ -63,8 +94,15 @@ if __name__ == '__main__':
     print('淘宝结果：')
     for j in b:
         print(j)
+
     tm = TM_WordSearch(word)
     print('天猫结果：')
     t = tm.get_result()
     for i in t:
         print(i)
+
+    jd = JD_WordSearch(word)
+    print('京东结果：')
+    jj = jd.get_results()
+    for m in jj:
+        print(m)

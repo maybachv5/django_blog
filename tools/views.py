@@ -16,4 +16,6 @@ def wordsearch_api(request):
     tb_results = tb.get_result()
     tm = TM_WordSearch(word)
     tm_results = tm.get_result()
-    return JsonResponse({'tb_results':tb_results,'tm_results':tm_results})
+    jd = JD_WordSearch(word)
+    jd_results = jd.get_results()
+    return JsonResponse({'tb_results':tb_results,'tm_results':tm_results,'jd_results':jd_results})
