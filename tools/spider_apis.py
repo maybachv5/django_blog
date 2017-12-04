@@ -129,7 +129,7 @@ class VIP_WordSearch(object):
                 product['goodscount'] = each.get('goodsCount')
                 wordlist = each.get('props')
                 if wordlist:
-                    words = '/'.join([w.get('name') for w in wordlist])
+                    words = '，'.join([w.get('name') for w in wordlist])
                     product['words'] = words
                 else:
                     product['words'] = ''
