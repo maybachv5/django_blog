@@ -12,7 +12,7 @@ function wordsearch_func(URL){
             var tmret = ret.tm_results;
             var jdret = ret.jd_results;
             var vipret = ret.vip_results;
-            
+
             for (var i=0;i<tbret.length;i++){
             tbhtml += '<tr><th scope="row">' + (i+1) + '</th>' + '<td>' + tbret[i][0] +
             '</td>' + '<td>' + tbret[i][1] + '</td></tr>'
