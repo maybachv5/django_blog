@@ -24,7 +24,11 @@ class TB_WordSearch(object):
             'q':self.word
         }
         html = requests.get(self.base_url,params=d,headers=self.headers).text
-        data = re.findall('callback\(({.*})\)',html)[0]
+        data = re.findall('callback\(({.*})\)',html)
+        if data:
+            data = data[0]
+        else:
+            data = None
         try:
             data = json.loads(data)
             results = data.get('result')
@@ -58,7 +62,11 @@ class TM_WordSearch(object):
             'src':'tmall_pc'
         }
         html = requests.get(self.baseurl,params=data,headers=self.headers).text
-        data = re.findall('jsonp.*?\(({.*})\)', html)[0]
+        data = re.findall('jsonp.*?\(({.*})\)', html)
+        if data:
+            data = data[0]
+        else:
+            data = None
         try:
             data = json.loads(data)
             results = data.get('result')
@@ -118,7 +126,11 @@ class VIP_WordSearch(object):
             '_':str(int(t*1000)),
         }
         html = requests.get(self.baseurl, params=info, headers=self.headers).text
-        data = re.findall('searchSuggestions\((.*)\)',html)[0]
+        data = re.findall('search.*?\(({.*})\)',html)
+        if data:
+            data = data[0]
+        else:
+            data = None
         try:
             data = json.loads(data)
             results = data.get('data')
