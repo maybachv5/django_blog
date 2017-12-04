@@ -13,7 +13,7 @@ class TB_WordSearch(object):
         self.headers = {
             'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/57.0.2987.110 Safari/537.36',
-            'host':'suggest.taobao.com',
+            'referer':'https://www.taobao.com/',
         }
 
     def get_result(self):
@@ -25,8 +25,11 @@ class TB_WordSearch(object):
         }
         html = requests.get(self.base_url,params=d,headers=self.headers).text
         data = re.findall('callback\(({.*})\)',html)[0]
-        data = json.loads(data)
-        results = data.get('result')
+        try:
+            data = json.loads(data)
+            results = data.get('result')
+        except:
+            results = None
         return results
 
 class TM_WordSearch(object):
@@ -37,6 +40,7 @@ class TM_WordSearch(object):
         self.headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/57.0.2987.110 Safari/537.36',
+            'referer':'https://www.tmall.com/',
         }
 
     def get_result(self):
@@ -55,8 +59,11 @@ class TM_WordSearch(object):
         }
         html = requests.get(self.baseurl,params=data,headers=self.headers).text
         data = re.findall('jsonp.*?\(({.*})\)', html)[0]
-        data = json.loads(data)
-        results = data.get('result')
+        try:
+            data = json.loads(data)
+            results = data.get('result')
+        except:
+            results = None
         return results
 
 class JD_WordSearch(object):
@@ -84,11 +91,55 @@ class JD_WordSearch(object):
         }
         html = requests.get(self.baseurl,params=info,headers=self.headers).text
         data = re.findall('({"key".*?})',html)
-        results = [json.loads(each) for each in data]
+        try:
+            results = [json.loads(each) for each in data]
+        except:
+            results = None
         return results
 
+class VIP_WordSearch(object):
+    '''唯品会搜索'''
+    def __init__(self,word):
+        self.word = word
+        self.baseurl = 'https://category.vip.com/ajax/getSuggest.php'
+        self.headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/57.0.2987.110 Safari/537.36',
+            'Host':'category.vip.com',
+            'Referer':'https://category.vip.com/',
+        }
+
+    def get_results(self):
+        t = time.time()
+        info = {
+            'callback':'searchSuggestions',
+            'warehouse':'VIP_NH',
+            'keyword':self.word,
+            '_':str(int(t*1000)),
+        }
+        html = requests.get(self.baseurl, params=info, headers=self.headers).text
+        data = re.findall('searchSuggestions\((.*)\)',html)[0]
+        try:
+            data = json.loads(data)
+            results = data.get('data')
+            last_results = []
+            for each in results:
+                product = {}
+                product['word'] = each.get('word')
+                product['goodscount'] = each.get('goodsCount')
+                wordlist = each.get('props')
+                if wordlist:
+                    words = '/'.join([w.get('name') for w in wordlist])
+                    product['words'] = words
+                else:
+                    product['words'] = ''
+                last_results.append(product)
+        except:
+            last_results = None
+        return last_results
+
 if __name__ == '__main__':
-    word = '键盘'
+    word = '机械键盘'
     tb = TB_WordSearch(word)
     b = tb.get_result()
     print('淘宝结果：')
@@ -106,3 +157,9 @@ if __name__ == '__main__':
     jj = jd.get_results()
     for m in jj:
         print(m)
+
+    vip = VIP_WordSearch(word)
+    print('唯品会结果：')
+    vv = vip.get_results()
+    for v in vv:
+        print(v)
