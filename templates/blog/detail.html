@@ -4,7 +4,11 @@
 {% load blog_tags %}
 {% load comment_tags %}
 
-{% block head_title %}{{ article.title }}{% endblock %}
+{% block head_title %}{{ article.title }}_{{ article.category }}{% endblock %}
+{% block metas %}
+<meta name="description" content="{{ article.summary }}">
+<meta name="keywords" content="{% tag_to_str article %}">
+{% endblock %}
 
 {% block css-file %}
 <link href="{% static 'blog/pygments/github-colorful.css' %}" rel="stylesheet">

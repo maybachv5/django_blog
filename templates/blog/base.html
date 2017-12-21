@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>{% block head_title %}{% endblock %} - Django博客</title>
+    <title>{% block head_title %}{% endblock %}_Django博客</title>
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -15,8 +15,8 @@
     <link href="{% static 'blog/mystyle/css/base-css.css' %}" rel="stylesheet">
     {% block css-file %}{% endblock %}
     <link rel="icon" href="{% static 'blog/img/favicon.ico'%}">
-    <meta name="description" content="{{ site_description }}">
-    <meta name="keywords" content="{{ site_keywords }}">
+    {% block metas %}{% endblock %}
+
     <!--站长平台验证-->
     <meta name="360-site-verification" content="ec2037fcc738660ccc75c2eba703f6c9" />
     <meta name="sogou_site_verification" content="lAGeVn4b5M"/>

@@ -6,6 +6,7 @@ from markdown.extensions.toc import TocExtension  # 锚点的拓展
 from django.utils.text import slugify  # 这个目测是URL支持中文的拓展
 from haystack.generic_views import SearchView  # 导入搜索视图
 from django.shortcuts import get_object_or_404, render
+import time
 
 def Aboutview(request):
     return render(request,'blog/about.html',context={})
@@ -39,6 +40,21 @@ class DetailView(generic.DetailView):
 
     def get_object(self):
         obj = super(DetailView, self).get_object()
+        # 设置浏览量增加时间判断,同一篇文章两次浏览超过2小时才重新统计阅览量,作者浏览忽略
+        u = self.request.user
+        ses = self.request.session
+        the_key = 'is_read_{}'.format(obj.id)
+        is_read_time = ses.get(the_key)
+        if not is_read_time:
+            if u != obj.author:
+                obj.update_views()
+                ses[the_key] = time.time()
+        else:
+            now_time = time.time()
+            t = now_time - is_read_time
+            if t > 7200 and u != obj.author:
+                obj.update_views()
+                ses[the_key] = time.time()
         md = markdown.Markdown(extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
@@ -47,13 +63,6 @@ class DetailView(generic.DetailView):
         obj.body = md.convert(obj.body)
         obj.toc = md.toc
         return obj
-
-    def get_context_data(self, **kwargs):
-        article = self.get_object()
-        article.update_views()
-        context_data = super(DetailView, self).get_context_data()
-        return context_data
-
 
 class CategoryView(generic.ListView):
     model = Article

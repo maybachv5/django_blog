@@ -198,8 +198,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 网站上下文信息
 DEFAULT_IMG_LINL = 'http://cdn.stopfollow.com/summary_default.png'
-SITE_DESCRIPTION = '一个后端使用Django框架，前端使用Bootstrap3搭建的个人博客网站，用于Python的学习和交流。'
-SITE_KEYWORDS = 'Web开发，Python，爬虫，Django，blog, 个人博客，网站部署'
+SITE_DESCRIPTION = 'Django博客，一个后端使用Django框架，前端使用Bootstrap3搭建的个人博客网站，用于Python的学习和交流。'
+SITE_KEYWORDS = 'Python Web开发,Python爬虫实例,Django博客教程,个人博客搭建'
 
 # messages 标签设置，设置成bootstrap3样式
 from django.contrib.messages import constants as message_constants

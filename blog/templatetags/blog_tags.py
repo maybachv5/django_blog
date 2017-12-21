@@ -38,6 +38,12 @@ def get_tag_list():
     lis = Tag.objects.all()
     return [each for each in lis if each.get_article_list().count() > 0]
 
+@register.simple_tag
+def tag_to_str(art):
+    '''将文章标签变成字符串'''
+    tags = art.tags.all()
+    return ','.join([tag.name for tag in tags])
+
 
 @register.simple_tag
 def get_category_list():
