@@ -12,7 +12,7 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--my css files-->
-    <link href="{% static 'blog/mystyle/css/base-css.css' %}" rel="stylesheet">
+    <link href="{% static 'blog/mystyle/css/base-css.css' %}?v=20171222" rel="stylesheet">
     {% block css-file %}{% endblock %}
     <link rel="icon" href="{% static 'blog/img/favicon.ico'%}">
     {% block metas %}{% endblock %}
@@ -93,6 +93,8 @@ var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.
 document.write('<script src="' + src + '" id="sozz"><\/script>');
 })();
 </script>
+<script src="https://s13.cnzz.com/z_stat.php?id=1271548398&web_id=1271548398" language="JavaScript"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1271548398'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1271548398' type='text/javascript'%3E%3C/script%3E"));</script>
 {% if user.is_authenticated %}
 <script type="text/javascript">
 //新消息标题提示

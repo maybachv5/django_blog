@@ -18,30 +18,26 @@
     <div class="carousel-inner" role="listbox">
         {% for each in carousels %}
         {% if forloop.counter0 == 0 %}
-        <div class="item active">
-        {% else %}
-        <div class="item">
-        {% endif %}
-            <a href="{{ each.url }}">
-                <img src="{{ each.img_url }}" alt="轮播图{{ forloop.counter0 }}">
-            </a>
-            <div class="carousel-caption">
-                {% if each.title %}
-                <h3>{{ each.title }}</h3>
-                {% endif %}
-                <p>{{ each.content }}</p>
+        <div class="item active">{% else %}
+            <div class="item">{% endif %}
+                <a href="{{ each.url }}">
+                    <img src="{{ each.img_url }}" alt="{{ each.content }}">
+                </a>
+                <div class="carousel-caption">
+                    {% if each.title %}<h3>{{ each.title }}</h3>{% endif %}
+                    <p>{{ each.content }}</p>
+                </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
 
-    <!-- Controls -->
-    <a class="left carousel-control" id="move-btn" href="#my-carousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" id="move-btn" href="#my-carousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+        <!-- Controls -->
+        <a class="left carousel-control" id="move-btn" href="#my-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" id="move-btn" href="#my-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>

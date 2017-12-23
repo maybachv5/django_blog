@@ -21,6 +21,7 @@ from blog.feeds import AllArticleRssFeed
 
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import ArticleSitemap, CategorySitemap, TagSitemap
+from django.views.generic import TemplateView
 
 # 网站地图
 sitemaps = {
@@ -30,13 +31,13 @@ sitemaps = {
 }
 
 urlpatterns = [
-                  url(r'^admin/', admin.site.urls),
-                  url(r'^accounts/', include('allauth.urls')),  # allauth
-                  url(r'accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
-                  url('', include('blog.urls', namespace='blog')),  # blog
-                  url(r'^comments/', include('comment.urls', namespace='comment')),  # comment
-                  url(r'^blog/rss/$', AllArticleRssFeed(), name='rss'),
-                  url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-                  url(r'^tools/',include('tools.urls',namespace='tools')), # tools
-
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 加入这个才能显示media文件
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('allauth.urls')),  # allauth
+    url(r'accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
+    url('', include('blog.urls', namespace='blog')),  # blog
+    url(r'^comments/', include('comment.urls', namespace='comment')),  # comment
+    url(r'^feed/$', AllArticleRssFeed(), name='rss'),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^tools/',include('tools.urls',namespace='tools')), # tools
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')), # robots
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 加入这个才能显示media文件
