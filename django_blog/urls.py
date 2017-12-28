@@ -33,7 +33,7 @@ sitemaps = {
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),  # allauth
-    url(r'accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
+    url(r'^accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
     url('', include('blog.urls', namespace='blog')),  # blog
     url(r'^comments/', include('comment.urls', namespace='comment')),  # comment
     url(r'^feed/$', AllArticleRssFeed(), name='rss'),

@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^tag/(?P<slug>[\w-]+)/$',TagView.as_view(),name='tag'),
     url(r'^search/$', MySearchView.as_view(), name='search_view'),
     url(r'^about/$',Aboutview,name='about'),
-    url(r'^silian\.xml$',SilianView.as_view(),name='silian'),
+    url(r'^silian\.xml$',SilianView.as_view(content_type='application/xml'),name='silian'),
 ]

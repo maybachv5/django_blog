@@ -7,6 +7,7 @@ from django.utils.text import slugify  # 这个目测是URL支持中文的拓展
 from haystack.generic_views import SearchView  # 导入搜索视图
 from django.shortcuts import get_object_or_404, render
 import time
+from haystack.query import SearchQuerySet
 
 def Aboutview(request):
     return render(request,'blog/about.html',context={})
@@ -104,6 +105,7 @@ class TagView(generic.ListView):
 class MySearchView(SearchView):
     context_object_name = 'search_list'
     paginate_by = 10
+    queryset = SearchQuerySet().filter(status='p').order_by('-views')
 
     def get_queryset(self):
         queryset = super(MySearchView, self).get_queryset()

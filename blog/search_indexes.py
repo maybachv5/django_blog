@@ -7,6 +7,7 @@ from .models import Article
 class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     status = indexes.CharField(model_attr='status')
+    views = indexes.IntegerField(model_attr='views')
 
     def get_model(self):
         return Article
